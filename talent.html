@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Join as Talent — Pearl Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+img{display:block;max-width:100%}
+
+/* ─── TOKENS ─── */
+:root{
+  --forest:#071b10;
+  --forest-2:#0d3320;
+  --forest-3:#165c38;
+  --forest-4:#1e8a52;
+  --gold:#c9a44c;
+  --gold-2:#dfc074;
+  --gold-3:#f5e4a8;
+  --blue:#6ecde8;
+  --blue-2:#3db8d8;
+  --blue-3:#1a8fb0;
+  --blue-pale:#e2f4fa;
+  --ink:#040b06;
+  --ink-2:#0a1a0e;
+  --cream:#f6f1e8;
+  --cream-2:#eee8dd;
+  --white:#ffffff;
+  --tx-dark:#0d1f12;
+  --tx-mid:#3a5244;
+  --tx-mute:#7a9488;
+  --bd:rgba(10,26,14,0.1);
+  --fs-xs:11px; --fs-sm:13px; --fs-base:15px; --fs-md:17px;
+  --fs-lg:1.35rem; --fs-xl:1.75rem; --fs-2xl:2.5rem; --fs-3xl:3.5rem;
+}
+
+/* ─── BASE ─── */
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--tx-dark);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ─── NAV ─── */
+.site-nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;
+  transition:background .3s,border-color .3s;
+}
+.site-nav.solid,.site-nav.always-solid{
+  background:rgba(4,11,6,.94);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+.nav-gem{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--forest-2);border:1px solid rgba(201,164,76,.35);
+  display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;
+}
+.nav-wordmark{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#fff;letter-spacing:-.4px;line-height:1}
+.nav-wordmark small{display:block;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.35);font-weight:500;text-transform:uppercase;margin-top:2px}
+.nav-links{display:flex;align-items:center;gap:2.25rem;list-style:none}
+.nav-links a{font-size:13.5px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;position:relative;transition:color .2s;letter-spacing:.1px}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .2s;border-radius:1px}
+.nav-links a:hover,a.nav-active{color:#fff}
+.nav-links a:hover::after,a.nav-active::after{width:100%}
+.nav-cta{
+  background:var(--gold);color:var(--forest) !important;
+  padding:.5rem 1.35rem;border-radius:6px;font-weight:700 !important;
+  font-size:13px !important;letter-spacing:.3px;transition:all .2s !important;
+}
+.nav-cta:hover{background:var(--gold-2) !important}
+.nav-cta::after{display:none !important}
+.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-ham span{display:block;width:24px;height:1.5px;background:#fff;transition:all .3s}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .nav-ham{display:flex}
+}
+
+/* ─── FOOTER ─── */
+.site-footer{background:var(--ink);padding:5rem 5% 0}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.8fr 1fr 1fr 1.2fr;
+  gap:3rem;
+  padding-bottom:4rem;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.footer-brand{}
+.footer-brand .nav-wordmark{font-size:18px}
+.footer-brand p{font-size:13.5px;color:rgba(255,255,255,.35);line-height:1.8;margin-top:1rem;font-weight:300;max-width:260px}
+.footer-col h4{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1.25rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.65rem}
+.footer-col a{font-size:13.5px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;font-weight:300}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{
+  padding:1.5rem 0;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:12px;color:rgba(255,255,255,.2);
+}
+.footer-powered a{color:rgba(110,205,232,.5);text-decoration:none;font-weight:500;transition:color .2s}
+.footer-powered a:hover{color:var(--blue)}
+
+/* ─── PAGE HEADER (inner pages) ─── */
+.page-header{
+  padding:8.5rem 5% 5rem;
+  background:var(--ink);
+  position:relative;overflow:hidden;
+}
+.ph-bg-num{
+  position:absolute;right:-2vw;bottom:-4vw;
+  font-family:'Syne',sans-serif;font-size:28vw;font-weight:900;
+  color:rgba(255,255,255,.025);line-height:.9;letter-spacing:-10px;
+  pointer-events:none;white-space:nowrap;
+}
+.ph-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:1rem}
+.ph-label.gold{color:var(--gold)}
+.ph-label.blue{color:var(--blue)}
+.ph-h1{
+  font-family:'Syne',sans-serif;font-size:clamp(3rem,6vw,6rem);
+  font-weight:900;line-height:.95;letter-spacing:-3px;color:#fff;
+  margin-bottom:1.5rem;
+}
+.ph-sub{font-size:var(--fs-lg);font-weight:300;color:rgba(255,255,255,.45);max-width:520px;line-height:1.8}
+
+/* ─── UTILITIES ─── */
+.container{max-width:1240px;margin:0 auto;padding:0 5%}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.lbl{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.75rem;display:block}
+.lbl.gold{color:var(--gold)}
+.lbl.blue{color:var(--blue-3)}
+.lbl.green{color:var(--forest-4)}
+.lbl.light{color:rgba(255,255,255,.4)}
+h2.sec-head{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,4.5vw,4rem);font-weight:900;line-height:1;letter-spacing:-2.5px;color:var(--tx-dark)}
+h2.sec-head.white{color:#fff}
+.sec-lead{font-size:var(--fs-lg);font-weight:300;color:var(--tx-mid);line-height:1.85;margin-top:.85rem}
+.sec-lead.light{color:rgba(255,255,255,.45)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .65s ease,transform .65s ease}
+.reveal-left.in{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .65s ease,transform .65s ease}
+.reveal-right.in{opacity:1;transform:translateX(0)}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.9rem 2rem;border-radius:7px;font-size:14px;font-weight:600;
+  text-decoration:none;border:none;cursor:pointer;letter-spacing:.3px;
+  transition:all .25s;font-family:'Outfit',sans-serif;
+}
+.btn-gold{background:var(--gold);color:var(--forest)}
+.btn-gold:hover{background:var(--gold-2);transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,164,76,.3)}
+.btn-forest{background:var(--forest-2);color:var(--gold-2)}
+.btn-forest:hover{background:var(--forest-3);transform:translateY(-2px);box-shadow:0 10px 28px rgba(7,27,16,.3)}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.25)}
+.btn-outline-w:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.06)}
+.btn-outline-d{background:transparent;color:var(--tx-dark);border:1.5px solid rgba(10,26,14,.2)}
+.btn-outline-d:hover{border-color:var(--forest-2);background:rgba(7,27,16,.04)}
+.btn-blue{background:var(--blue-2);color:#fff}
+.btn-blue:hover{background:var(--blue-3);transform:translateY(-2px);box-shadow:0 12px 28px rgba(61,184,216,.3)}
+/* TALENT PAGE */
+.talent-hero{
+  min-height:90vh;padding:8rem 5% 5rem;background:var(--forest);
+  display:flex;align-items:center;position:relative;overflow:hidden;
+}
+.th-bg{position:absolute;inset:0}
+.th-bg span{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.04)}
+.th-bg span:nth-child(1){width:600px;height:600px;bottom:-200px;right:-200px}
+.th-bg span:nth-child(2){width:900px;height:900px;bottom:-400px;right:-400px}
+.th-bg span:nth-child(3){width:300px;height:300px;top:-100px;left:10%}
+.th-glow{position:absolute;bottom:-200px;right:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(110,205,232,.07) 0%,transparent 70%)}
+.th-glow2{position:absolute;top:0;left:20%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,164,76,.06) 0%,transparent 70%)}
+.talent-hero-inner{position:relative;z-index:2;max-width:760px}
+.th-kicker{display:inline-flex;align-items:center;gap:.6rem;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);border:1px solid rgba(110,205,232,.25);padding:.4rem 1rem;border-radius:100px;background:rgba(110,205,232,.07);margin-bottom:2.25rem}
+.talent-hero h1{font-family:'Syne',sans-serif;font-size:clamp(3.2rem,8vw,8rem);font-weight:900;line-height:.9;letter-spacing:-4px;color:#fff;margin-bottom:1.75rem}
+.talent-hero h1 .gold{color:var(--gold)}
+.talent-hero h1 .italic{font-style:italic;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:.85em;color:rgba(255,255,255,.7);display:block;letter-spacing:-2px}
+.talent-hero p{font-size:var(--fs-lg);font-weight:300;color:rgba(255,255,255,.55);line-height:1.85;max-width:560px;margin-bottom:2.5rem}
+.th-stats{display:flex;gap:3rem;margin-top:3rem;flex-wrap:wrap}
+.ths{border-left:2px solid rgba(201,164,76,.3);padding-left:1rem}
+.ths-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:900;color:var(--gold);line-height:1}
+.ths-label{font-size:11px;color:rgba(255,255,255,.35);margin-top:3px;letter-spacing:.5px}
+/* ELIGIBILITY */
+.eligibility-sec{background:var(--cream-2);padding:6rem 5%}
+.elig-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.elig-left h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;letter-spacing:-2px;color:var(--tx-dark);margin-bottom:1rem}
+.elig-criteria{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.ec{background:white;border:1px solid var(--bd);border-radius:14px;padding:1.5rem;transition:all .3s}
+.ec:hover{border-color:var(--forest-3);transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,26,14,.08)}
+.ec-icon{font-size:1.75rem;margin-bottom:.75rem;display:block}
+.ec h4{font-size:.95rem;font-weight:600;color:var(--tx-dark);margin-bottom:.35rem}
+.ec p{font-size:13px;color:var(--tx-mute);line-height:1.6;font-weight:300}
+.elig-right{}
+.elig-card{background:var(--forest);border-radius:22px;padding:2.5rem;position:relative;overflow:hidden}
+.elig-card::before{content:'';position:absolute;bottom:-80px;right:-80px;width:250px;height:250px;border-radius:50%;background:rgba(110,205,232,.06)}
+.elig-card h3{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:.5rem;letter-spacing:-.5px;position:relative;z-index:2}
+.elig-card p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:1.75rem;font-weight:300;position:relative;z-index:2}
+/* CURRICULUM */
+.curriculum-sec{background:var(--ink-2);padding:6rem 5%}
+.curriculum-sec h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;letter-spacing:-2px;color:#fff;margin-bottom:.75rem}
+.curriculum-sec .sub{font-size:var(--fs-md);font-weight:300;color:rgba(255,255,255,.4);margin-bottom:3.5rem;line-height:1.7}
+.curriculum-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(255,255,255,.04);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+.cg-cell{padding:2.25rem;background:#0a1510;transition:background .3s}
+.cg-cell:hover{background:#0d1e16}
+.cg-week{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1rem}
+.cg-icon{font-size:1.8rem;margin-bottom:1rem;display:block}
+.cg-cell h4{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem;letter-spacing:-.2px}
+.cg-cell p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;font-weight:300}
+.cg-cert{display:inline-block;margin-top:1rem;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:.3rem .7rem;border-radius:4px;background:rgba(201,164,76,.1);border:1px solid rgba(201,164,76,.2);color:var(--gold)}
+/* EARNINGS */
+.earnings-sec{background:var(--cream);padding:6rem 5%}
+.earnings-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.earn-left h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;letter-spacing:-2px;color:var(--tx-dark);margin-bottom:1rem}
+.earnings-table{width:100%;border-collapse:collapse;margin-top:2rem}
+.earnings-table th{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--tx-mute);padding:.75rem 1rem;text-align:left;border-bottom:2px solid var(--bd)}
+.earnings-table td{padding:.9rem 1rem;border-bottom:1px solid var(--bd);font-size:14px;color:var(--tx-mid);font-weight:300;vertical-align:middle}
+.earnings-table tr:last-child td{border-bottom:none;font-weight:600;color:var(--tx-dark)}
+.level-badge{display:inline-block;padding:.25rem .65rem;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.lb-trainee{background:rgba(10,26,14,.07);color:var(--tx-mid)}
+.lb-junior{background:rgba(30,138,82,.1);color:var(--forest-4)}
+.lb-senior{background:rgba(201,164,76,.1);color:#8a6a00}
+.lb-lead{background:var(--forest);color:var(--gold-2)}
+.earn-card{background:var(--forest);border-radius:22px;padding:2.5rem;overflow:hidden;position:relative}
+.earn-card::before{content:'';position:absolute;top:-100px;right:-100px;width:300px;height:300px;border-radius:50%;background:rgba(201,164,76,.07)}
+.earn-card h3{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:.5rem;position:relative;z-index:2}
+.earn-card p{font-size:14px;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:2rem;font-weight:300;position:relative;z-index:2}
+.earn-perks{list-style:none;position:relative;z-index:2}
+.earn-perks li{display:flex;align-items:center;gap:.75rem;font-size:14px;color:rgba(255,255,255,.7);padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.06);font-weight:300}
+.earn-perks li:last-child{border-bottom:none}
+.ep-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0}
+/* APPLY */
+.apply-sec{background:var(--ink);padding:7rem 5%;position:relative;overflow:hidden}
+.apply-sec::after{content:'APPLY';font-family:'Syne',sans-serif;font-size:25vw;font-weight:900;color:rgba(255,255,255,.015);position:absolute;right:-3vw;bottom:-5vw;line-height:1;letter-spacing:-10px;pointer-events:none}
+.apply-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start;position:relative;z-index:2}
+.apply-left h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;letter-spacing:-2px;color:#fff;margin-bottom:1rem}
+.apply-left p{font-size:var(--fs-md);font-weight:300;color:rgba(255,255,255,.45);line-height:1.85;margin-bottom:2rem}
+.apply-steps{list-style:none}
+.as-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.as-item:last-child{border-bottom:none}
+.as-num{width:32px;height:32px;border-radius:8px;background:rgba(201,164,76,.12);border:1px solid rgba(201,164,76,.2);color:var(--gold);font-family:'Syne',sans-serif;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.as-item h4{font-size:.95rem;font-weight:600;color:#fff;margin-bottom:.2rem}
+.as-item p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.6;font-weight:300}
+.apply-form{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:2.5rem}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.fg label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:9px;padding:.8rem 1.1rem;font-size:14px;color:#fff;font-family:'Outfit',sans-serif;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(201,164,76,.35)}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.18)}
+.fg select option{background:#0a1510}
+.fg textarea{resize:vertical;min-height:90px;line-height:1.6}
+.submit-btn{background:var(--gold);color:var(--forest);padding:1rem 2rem;border-radius:9px;font-size:15px;font-weight:700;border:none;cursor:pointer;width:100%;letter-spacing:.3px;transition:all .25s;margin-top:.5rem;font-family:'Outfit',sans-serif}
+.submit-btn:hover{background:var(--gold-2);transform:translateY(-1px)}
+@media(max-width:900px){
+  .talent-hero h1{letter-spacing:-3px}
+  .elig-grid,.earnings-grid,.apply-grid{grid-template-columns:1fr;gap:3rem}
+  .elig-criteria{grid-template-columns:1fr}
+  .curriculum-grid{grid-template-columns:1fr 1fr}
+  .row2{grid-template-columns:1fr}
+}
+</style></head><body>
+<nav class="site-nav always-solid">
+  <a href="index.html" class="nav-logo"><div class="nav-gem">💎</div><div class="nav-wordmark">Pearl Digital<small>Uganda · Global</small></div></a>
+  <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="talent.html" class="nav-active">Join as Talent</a></li><li><a href="contact.html" class="nav-cta">Get Started</a></li></ul>
+</nav>
+<section class="talent-hero">
+  <div class="th-bg"><span></span><span></span><span></span></div>
+  <div class="th-glow"></div><div class="th-glow2"></div>
+  <div class="talent-hero-inner">
+    <div class="th-kicker">For Ugandan Youth · Ages 18–35</div>
+    <h1>Train.<br><span class="gold">Certify.</span><br><span class="italic">earn globally.</span></h1>
+    <p>Pearl Digital trains Uganda's most talented young people in world-class digital marketing — then connects them to paying international clients. No prior experience needed. Just commitment.</p>
+    <div class="hero-btns"><a href="#apply" class="btn btn-gold">Apply to Join →</a><a href="#curriculum" class="btn btn-outline-w">See the Curriculum</a></div>
+    <div class="th-stats">
+      <div class="ths"><div class="ths-num">250</div><div class="ths-label">Places available</div></div>
+      <div class="ths"><div class="ths-num" style="color:var(--blue)">6–12</div><div class="ths-label">Week programme</div></div>
+      <div class="ths"><div class="ths-num">USD</div><div class="ths-label">Earn in dollars</div></div>
+    </div>
+  </div>
+</section>
+<section class="eligibility-sec">
+  <div class="elig-grid">
+    <div class="reveal-left">
+      <span class="lbl green" style="display:block;margin-bottom:.5rem">Who Can Apply</span>
+      <h2>Open to ambitious<br>Ugandan talent.</h2>
+      <p class="sec-lead" style="margin-bottom:0">You don't need a degree. You don't need experience. You need drive, discipline, and a basic ability to use a computer.</p>
+      <div class="elig-criteria">
+        <div class="ec"><span class="ec-icon">🇺🇬</span><h4>Ugandan Citizen</h4><p>Open to Ugandan nationals based in Uganda.</p></div>
+        <div class="ec"><span class="ec-icon">🎂</span><h4>Age 18–35</h4><p>Youth-focused programme for early-career individuals.</p></div>
+        <div class="ec"><span class="ec-icon">💻</span><h4>Basic Computer Skills</h4><p>Able to use a computer, email and a web browser.</p></div>
+        <div class="ec"><span class="ec-icon">🌐</span><h4>English Literacy</h4><p>Comfortable reading and writing in English.</p></div>
+        <div class="ec"><span class="ec-icon">🔥</span><h4>High Motivation</h4><p>Ready to commit 4–6 hours per day to the programme.</p></div>
+        <div class="ec"><span class="ec-icon">📶</span><h4>Internet Access</h4><p>Reliable internet connection for online training.</p></div>
+      </div>
+    </div>
+    <div class="reveal-right" style="transition-delay:.15s">
+      <div class="elig-card">
+        <span class="lbl light" style="display:block;margin-bottom:.75rem;position:relative;z-index:2">Programme Overview</span>
+        <h3>What You're Signing Up For</h3>
+        <p>A structured, intensive training programme that turns you into a certified digital marketer — then gets you working on live international client accounts.</p>
+        <a href="#apply" class="btn btn-gold" style="width:100%;justify-content:center;position:relative;z-index:2">Apply Now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="curriculum-sec" id="curriculum">
+  <span class="lbl light" style="display:block;margin-bottom:.5rem">Training Curriculum</span>
+  <h2>What you'll learn.</h2>
+  <p class="sub">A practical, hands-on curriculum built around real client work — not theory.</p>
+  <div class="curriculum-grid reveal">
+    <div class="cg-cell"><div class="cg-week">Weeks 1–2</div><span class="cg-icon">🌐</span><h4>Digital Marketing Foundations</h4><p>How the internet works, buyer journeys, funnel thinking and channel overview.</p></div>
+    <div class="cg-cell"><div class="cg-week">Weeks 3–4</div><span class="cg-icon">🔍</span><h4>Search Engine Optimisation</h4><p>Keyword research, on-page SEO, technical audits and link building fundamentals.</p><span class="cg-cert">Google Certified</span></div>
+    <div class="cg-cell"><div class="cg-week">Weeks 5–6</div><span class="cg-icon">💰</span><h4>Paid Advertising</h4><p>Google Ads, Meta Ads Manager, campaign structure, bidding and optimisation.</p><span class="cg-cert">Google Ads Cert.</span></div>
+    <div class="cg-cell"><div class="cg-week">Weeks 7–8</div><span class="cg-icon">✍️</span><h4>Content & Copywriting</h4><p>SEO writing, email sequences, landing page copy, social captions and brand voice.</p></div>
+    <div class="cg-cell"><div class="cg-week">Weeks 9–10</div><span class="cg-icon">📱</span><h4>Social Media Management</h4><p>Platform strategy, content calendar, community management and analytics.</p><span class="cg-cert">Meta Blueprint</span></div>
+    <div class="cg-cell"><div class="cg-week">Weeks 11–12</div><span class="cg-icon">📊</span><h4>Analytics & Reporting</h4><p>GA4 setup, conversion tracking, dashboards and client reporting frameworks.</p><span class="cg-cert">GA4 Certified</span></div>
+    <div class="cg-cell"><div class="cg-week">Ongoing</div><span class="cg-icon">🎯</span><h4>Live Client Work</h4><p>Work on real Pearl Digital client accounts under supervision of senior team leads.</p></div>
+    <div class="cg-cell"><div class="cg-week">Final Assessment</div><span class="cg-icon">🏆</span><h4>Pearl Digital Certification</h4><p>Pass our assessments and earn your official Pearl Digital specialist certification.</p><span class="cg-cert">Pearl Digital Cert.</span></div>
+  </div>
+</section>
+<section class="earnings-sec">
+  <div class="earnings-grid">
+    <div class="reveal-left">
+      <span class="lbl green" style="display:block;margin-bottom:.5rem">What You'll Earn</span>
+      <h2>Real income.<br>In dollars.</h2>
+      <p class="sec-lead" style="margin-bottom:1.5rem">Once you complete training and earn certification, you'll be assigned to live client accounts and start earning based on your level.</p>
+      <p style="font-size:14px;font-weight:300;color:var(--tx-mute);line-height:1.8">Top performers get access to international freelance opportunities and full-time roles with global agencies — all from Uganda.</p>
+      <table class="earnings-table">
+        <thead><tr><th>Level</th><th>Monthly Range (USD)</th><th>Timeline</th></tr></thead>
+        <tbody>
+          <tr><td><span class="level-badge lb-trainee">Trainee</span></td><td>$0 (training phase)</td><td>Weeks 1–12</td></tr>
+          <tr><td><span class="level-badge lb-junior">Junior</span></td><td>$150 – $350 / mo</td><td>Month 4+</td></tr>
+          <tr><td><span class="level-badge lb-senior">Senior</span></td><td>$400 – $700 / mo</td><td>Month 8+</td></tr>
+          <tr><td><span class="level-badge lb-lead">Team Lead</span></td><td>$800 – $1,200 / mo</td><td>Year 2+</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="reveal-right" style="transition-delay:.15s">
+      <div class="earn-card">
+        <span class="lbl light" style="display:block;margin-bottom:.75rem;position:relative;z-index:2">Beyond the Salary</span>
+        <h3>Why Pearl Digital is<br>Worth It</h3>
+        <p>Beyond the monthly income, Pearl Digital opens doors that would otherwise take years to reach from Uganda.</p>
+        <ul class="earn-perks">
+          <li><span class="ep-dot"></span>Internationally recognised Google & Meta certifications</li>
+          <li><span class="ep-dot"></span>Work experience on real EU/US client campaigns</li>
+          <li><span class="ep-dot"></span>Pearl Digital certification on your CV / LinkedIn</li>
+          <li><span class="ep-dot"></span>Access to global freelance platforms (Upwork, Fiverr Pro)</li>
+          <li><span class="ep-dot"></span>Mentorship from experienced team leads</li>
+          <li><span class="ep-dot"></span>Potential full-time role within Pearl Digital</li>
+          <li><span class="ep-dot"></span>USD earnings deposited via MTN Mobile Money or bank</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="apply-sec" id="apply">
+  <div class="apply-grid">
+    <div class="reveal-left">
+      <span class="lbl gold" style="display:block;margin-bottom:.5rem">Application</span>
+      <h2>Ready to start your<br>global career?</h2>
+      <p>Complete the application form and we'll review it within 5 business days. Selected applicants will be invited to a short virtual interview.</p>
+      <ol class="apply-steps">
+        <li class="as-item"><span class="as-num">1</span><div><h4>Fill in the Application</h4><p>Takes about 10 minutes. Tell us about you and your motivation.</p></div></li>
+        <li class="as-item"><span class="as-num">2</span><div><h4>Virtual Interview</h4><p>A short 20-minute call with our training team to assess fit.</p></div></li>
+        <li class="as-item"><span class="as-num">3</span><div><h4>Programme Kick-off</h4><p>Accepted applicants get a start date and onboarding pack.</p></div></li>
+        <li class="as-item"><span class="as-num">4</span><div><h4>Train & Get Certified</h4><p>Complete the 12-week curriculum and earn your certifications.</p></div></li>
+      </ol>
+    </div>
+    <div class="apply-form reveal-right" style="transition-delay:.15s">
+      <div class="row2">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="Sarah"></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Nakato"></div>
+      </div>
+      <div class="fg"><label>Email Address</label><input type="email" placeholder="sarah@gmail.com"></div>
+      <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+256 7XX XXX XXX"></div>
+      <div class="fg"><label>District / City</label><input type="text" placeholder="Kampala"></div>
+      <div class="fg"><label>Highest Education Level</label>
+        <select><option value="">Select...</option><option>O-Level / S4</option><option>A-Level / S6</option><option>Diploma</option><option>Bachelor's Degree</option><option>Postgraduate</option></select>
+      </div>
+      <div class="fg"><label>Current Computer Skills</label>
+        <select><option value="">Select...</option><option>Basic — can use email and web</option><option>Intermediate — comfortable with Office/Google</option><option>Advanced — familiar with digital tools</option></select>
+      </div>
+      <div class="fg"><label>Why do you want to join? (2–3 sentences)</label><textarea placeholder="Tell us what motivates you to join Pearl Digital..."></textarea></div>
+      <button class="submit-btn">Submit Application →</button>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="nav-wordmark">Pearl Digital<small>Uganda · Global</small></div><p>Uganda's first export-grade digital marketing studio.</p></div>
+    <div class="footer-col"><h4>Platform</h4><ul><li><a href="services.html">Services</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="talent.html">Join as Talent</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>For Talent</h4><ul><li><a href="#curriculum">Curriculum</a></li><li><a href="#apply">Apply Now</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:contact@pearldigital.ug">contact@pearldigital.ug</a></li><li><a href="#">Kampala, Uganda</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Pearl Digital UG</p><p class="footer-powered">Powered by <a href="https://futuregensoft.com" target="_blank">Future Generations Software</a> · Elmot Ltd &amp; UIA</p></div>
+</footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>io.observe(el));
+</script>
+</body></html>

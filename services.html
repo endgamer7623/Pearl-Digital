@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Services — Pearl Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+img{display:block;max-width:100%}
+
+/* ─── TOKENS ─── */
+:root{
+  --forest:#071b10;
+  --forest-2:#0d3320;
+  --forest-3:#165c38;
+  --forest-4:#1e8a52;
+  --gold:#c9a44c;
+  --gold-2:#dfc074;
+  --gold-3:#f5e4a8;
+  --blue:#6ecde8;
+  --blue-2:#3db8d8;
+  --blue-3:#1a8fb0;
+  --blue-pale:#e2f4fa;
+  --ink:#040b06;
+  --ink-2:#0a1a0e;
+  --cream:#f6f1e8;
+  --cream-2:#eee8dd;
+  --white:#ffffff;
+  --tx-dark:#0d1f12;
+  --tx-mid:#3a5244;
+  --tx-mute:#7a9488;
+  --bd:rgba(10,26,14,0.1);
+  --fs-xs:11px; --fs-sm:13px; --fs-base:15px; --fs-md:17px;
+  --fs-lg:1.35rem; --fs-xl:1.75rem; --fs-2xl:2.5rem; --fs-3xl:3.5rem;
+}
+
+/* ─── BASE ─── */
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--tx-dark);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ─── NAV ─── */
+.site-nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;
+  transition:background .3s,border-color .3s;
+}
+.site-nav.solid,.site-nav.always-solid{
+  background:rgba(4,11,6,.94);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+.nav-gem{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--forest-2);border:1px solid rgba(201,164,76,.35);
+  display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;
+}
+.nav-wordmark{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#fff;letter-spacing:-.4px;line-height:1}
+.nav-wordmark small{display:block;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.35);font-weight:500;text-transform:uppercase;margin-top:2px}
+.nav-links{display:flex;align-items:center;gap:2.25rem;list-style:none}
+.nav-links a{font-size:13.5px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;position:relative;transition:color .2s;letter-spacing:.1px}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .2s;border-radius:1px}
+.nav-links a:hover,a.nav-active{color:#fff}
+.nav-links a:hover::after,a.nav-active::after{width:100%}
+.nav-cta{
+  background:var(--gold);color:var(--forest) !important;
+  padding:.5rem 1.35rem;border-radius:6px;font-weight:700 !important;
+  font-size:13px !important;letter-spacing:.3px;transition:all .2s !important;
+}
+.nav-cta:hover{background:var(--gold-2) !important}
+.nav-cta::after{display:none !important}
+.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-ham span{display:block;width:24px;height:1.5px;background:#fff;transition:all .3s}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .nav-ham{display:flex}
+}
+
+/* ─── FOOTER ─── */
+.site-footer{background:var(--ink);padding:5rem 5% 0}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.8fr 1fr 1fr 1.2fr;
+  gap:3rem;
+  padding-bottom:4rem;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.footer-brand{}
+.footer-brand .nav-wordmark{font-size:18px}
+.footer-brand p{font-size:13.5px;color:rgba(255,255,255,.35);line-height:1.8;margin-top:1rem;font-weight:300;max-width:260px}
+.footer-col h4{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1.25rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.65rem}
+.footer-col a{font-size:13.5px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;font-weight:300}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{
+  padding:1.5rem 0;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:12px;color:rgba(255,255,255,.2);
+}
+.footer-powered a{color:rgba(110,205,232,.5);text-decoration:none;font-weight:500;transition:color .2s}
+.footer-powered a:hover{color:var(--blue)}
+
+/* ─── PAGE HEADER (inner pages) ─── */
+.page-header{
+  padding:8.5rem 5% 5rem;
+  background:var(--ink);
+  position:relative;overflow:hidden;
+}
+.ph-bg-num{
+  position:absolute;right:-2vw;bottom:-4vw;
+  font-family:'Syne',sans-serif;font-size:28vw;font-weight:900;
+  color:rgba(255,255,255,.025);line-height:.9;letter-spacing:-10px;
+  pointer-events:none;white-space:nowrap;
+}
+.ph-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:1rem}
+.ph-label.gold{color:var(--gold)}
+.ph-label.blue{color:var(--blue)}
+.ph-h1{
+  font-family:'Syne',sans-serif;font-size:clamp(3rem,6vw,6rem);
+  font-weight:900;line-height:.95;letter-spacing:-3px;color:#fff;
+  margin-bottom:1.5rem;
+}
+.ph-sub{font-size:var(--fs-lg);font-weight:300;color:rgba(255,255,255,.45);max-width:520px;line-height:1.8}
+
+/* ─── UTILITIES ─── */
+.container{max-width:1240px;margin:0 auto;padding:0 5%}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.lbl{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.75rem;display:block}
+.lbl.gold{color:var(--gold)}
+.lbl.blue{color:var(--blue-3)}
+.lbl.green{color:var(--forest-4)}
+.lbl.light{color:rgba(255,255,255,.4)}
+h2.sec-head{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,4.5vw,4rem);font-weight:900;line-height:1;letter-spacing:-2.5px;color:var(--tx-dark)}
+h2.sec-head.white{color:#fff}
+.sec-lead{font-size:var(--fs-lg);font-weight:300;color:var(--tx-mid);line-height:1.85;margin-top:.85rem}
+.sec-lead.light{color:rgba(255,255,255,.45)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .65s ease,transform .65s ease}
+.reveal-left.in{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .65s ease,transform .65s ease}
+.reveal-right.in{opacity:1;transform:translateX(0)}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.9rem 2rem;border-radius:7px;font-size:14px;font-weight:600;
+  text-decoration:none;border:none;cursor:pointer;letter-spacing:.3px;
+  transition:all .25s;font-family:'Outfit',sans-serif;
+}
+.btn-gold{background:var(--gold);color:var(--forest)}
+.btn-gold:hover{background:var(--gold-2);transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,164,76,.3)}
+.btn-forest{background:var(--forest-2);color:var(--gold-2)}
+.btn-forest:hover{background:var(--forest-3);transform:translateY(-2px);box-shadow:0 10px 28px rgba(7,27,16,.3)}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.25)}
+.btn-outline-w:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.06)}
+.btn-outline-d{background:transparent;color:var(--tx-dark);border:1.5px solid rgba(10,26,14,.2)}
+.btn-outline-d:hover{border-color:var(--forest-2);background:rgba(7,27,16,.04)}
+.btn-blue{background:var(--blue-2);color:#fff}
+.btn-blue:hover{background:var(--blue-3);transform:translateY(-2px);box-shadow:0 12px 28px rgba(61,184,216,.3)}
+/* Services page */
+.svc-section{padding:7rem 5%;position:relative;overflow:hidden}
+.svc-section:nth-child(even){background:var(--ink-2)}
+.svc-section:nth-child(odd){background:var(--cream)}
+.svc-layout{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.svc-layout.flip{direction:rtl}
+.svc-layout.flip>*{direction:ltr}
+.svc-num{
+  font-family:'Syne',sans-serif;font-size:10rem;font-weight:900;
+  line-height:.8;letter-spacing:-8px;
+  background:linear-gradient(135deg,var(--gold),rgba(201,164,76,.15));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:-1.5rem;
+}
+.svc-section:nth-child(even) .svc-num{background:linear-gradient(135deg,var(--blue),rgba(110,205,232,.12));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.svc-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:900;line-height:1;letter-spacing:-2px;margin-bottom:1rem}
+.svc-section:nth-child(odd) .svc-title{color:var(--tx-dark)}
+.svc-section:nth-child(even) .svc-title{color:#fff}
+.svc-desc{font-size:var(--fs-md);font-weight:300;line-height:1.85;margin-bottom:2rem}
+.svc-section:nth-child(odd) .svc-desc{color:var(--tx-mid)}
+.svc-section:nth-child(even) .svc-desc{color:rgba(255,255,255,.5)}
+.deliverables{list-style:none;margin-bottom:2rem}
+.deliverables li{
+  display:flex;align-items:flex-start;gap:.85rem;
+  font-size:14px;line-height:1.6;
+  padding:.75rem 0;border-bottom:1px solid;font-weight:300;
+}
+.svc-section:nth-child(odd) .deliverables li{color:var(--tx-mid);border-color:var(--bd)}
+.svc-section:nth-child(even) .deliverables li{color:rgba(255,255,255,.55);border-color:rgba(255,255,255,.06)}
+.deliverables li:last-child{border-bottom:none}
+.dl-dot{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px}
+.dl-dot.gold{background:rgba(201,164,76,.15);border:1px solid rgba(201,164,76,.25);color:var(--gold)}
+.dl-dot.blue{background:rgba(110,205,232,.12);border:1px solid rgba(110,205,232,.2);color:var(--blue)}
+.dl-dot.green{background:rgba(30,138,82,.12);border:1px solid rgba(30,138,82,.2);color:var(--forest-4)}
+.svc-visual{
+  border-radius:24px;overflow:hidden;position:relative;
+  min-height:420px;display:flex;align-items:center;justify-content:center;
+}
+.svc-section:nth-child(odd) .svc-visual{background:var(--forest)}
+.svc-section:nth-child(even) .svc-visual{background:#0a1e26}
+.sv-icon-big{font-size:6rem;position:relative;z-index:2}
+.sv-circles{position:absolute;inset:0}
+.sv-circles span{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.04);top:50%;left:50%;transform:translate(-50%,-50%)}
+.sv-circles span:nth-child(1){width:120px;height:120px}
+.sv-circles span:nth-child(2){width:220px;height:220px}
+.sv-circles span:nth-child(3){width:340px;height:340px}
+.sv-circles span:nth-child(4){width:480px;height:480px}
+.sv-stat{
+  position:absolute;background:rgba(0,0,0,.4);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.85rem 1.1rem;
+}
+.sv-stat.tl{top:1.5rem;left:1.5rem}
+.sv-stat.br{bottom:1.5rem;right:1.5rem}
+.sv-stat-num{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:900;color:var(--gold);line-height:1}
+.sv-stat-label{font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.5px;margin-top:2px}
+.svc-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.stag{font-size:11px;font-weight:600;padding:.3rem .8rem;border-radius:4px}
+.stag.gold{background:rgba(201,164,76,.1);border:1px solid rgba(201,164,76,.2);color:var(--gold)}
+.stag.blue{background:rgba(110,205,232,.08);border:1px solid rgba(110,205,232,.15);color:var(--blue)}
+.stag.green{background:rgba(30,138,82,.1);border:1px solid rgba(30,138,82,.18);color:var(--forest-4)}
+/* Services CTA */
+.svcs-cta{background:var(--forest);padding:6rem 5%;text-align:center}
+.svcs-cta h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:900;letter-spacing:-2px;color:#fff;margin-bottom:1rem}
+.svcs-cta p{font-size:var(--fs-lg);font-weight:300;color:rgba(255,255,255,.45);margin-bottom:2.5rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.8}
+.svcs-cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+@media(max-width:900px){
+  .svc-layout,.svc-layout.flip{grid-template-columns:1fr;direction:ltr}
+  .svc-visual{min-height:280px}
+}
+</style>
+</head>
+<body>
+<nav class="site-nav always-solid">
+  <a href="index.html" class="nav-logo"><div class="nav-gem">💎</div><div class="nav-wordmark">Pearl Digital<small>Uganda · Global</small></div></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html" class="nav-active">Services</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="talent.html">Join as Talent</a></li>
+    <li><a href="contact.html" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <span class="ph-label gold">What We Do</span>
+  <h1 class="ph-h1">Five services.<br>Zero compromise.</h1>
+  <p class="ph-sub">Every service is delivered by certified Ugandan specialists trained on Google's own methodology — at a fraction of what you'd pay in London or Amsterdam.</p>
+  <div class="ph-bg-num">Svcs</div>
+</div>
+
+<!-- SEO -->
+<section class="svc-section" id="seo">
+  <div class="svc-layout reveal">
+    <div>
+      <div class="svc-num">01</div>
+      <span class="stag gold">Most Requested</span>
+      <h2 class="svc-title">Search Engine<br>Optimisation</h2>
+      <p class="svc-desc">Full-spectrum SEO built to rank you where your customers are searching. On-page, off-page, technical — we cover every dimension of organic search.</p>
+      <div class="svc-tags"><span class="stag gold">Technical SEO</span><span class="stag gold">On-Page</span><span class="stag gold">Off-Page</span><span class="stag gold">Link Building</span></div>
+      <ul class="deliverables">
+        <li><span class="dl-dot gold">✓</span>Full technical SEO audit & fix-list every month</li>
+        <li><span class="dl-dot gold">✓</span>Keyword research & content gap analysis</li>
+        <li><span class="dl-dot gold">✓</span>On-page optimisation — title tags, meta, structure</li>
+        <li><span class="dl-dot gold">✓</span>Authority backlink building from relevant sites</li>
+        <li><span class="dl-dot gold">✓</span>Monthly ranking report with traffic projections</li>
+      </ul>
+      <a href="contact.html" class="btn btn-gold">Get Started →</a>
+    </div>
+    <div class="svc-visual reveal-right" style="transition-delay:.15s">
+      <div class="sv-circles"><span></span><span></span><span></span><span></span></div>
+      <div class="sv-stat tl"><div class="sv-stat-num">+127%</div><div class="sv-stat-label">Avg. organic traffic lift</div></div>
+      <div class="sv-icon-big">🔍</div>
+      <div class="sv-stat br"><div class="sv-stat-num">#1</div><div class="sv-stat-label">Target keyword rankings</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PPC -->
+<section class="svc-section" id="ppc">
+  <div class="svc-layout flip reveal">
+    <div>
+      <div class="svc-num">02</div>
+      <h2 class="svc-title">Paid<br>Advertising</h2>
+      <p class="svc-desc">Google, Meta, LinkedIn and TikTok campaigns built and managed end-to-end. Ad copy, targeting, bid strategy, A/B testing and weekly performance reports — all in.</p>
+      <div class="svc-tags"><span class="stag blue">Google Ads</span><span class="stag blue">Meta Ads</span><span class="stag blue">LinkedIn</span><span class="stag blue">TikTok</span></div>
+      <ul class="deliverables">
+        <li><span class="dl-dot blue">✓</span>Campaign strategy, audience research & targeting</li>
+        <li><span class="dl-dot blue">✓</span>Ad copy and creative briefs for every format</li>
+        <li><span class="dl-dot blue">✓</span>Budget allocation & smart bidding optimisation</li>
+        <li><span class="dl-dot blue">✓</span>A/B testing on copy, creative, and audiences</li>
+        <li><span class="dl-dot blue">✓</span>Weekly performance breakdown with ROAS tracking</li>
+      </ul>
+      <a href="contact.html" class="btn btn-blue">Get Started →</a>
+    </div>
+    <div class="svc-visual reveal-left" style="transition-delay:.15s">
+      <div class="sv-circles"><span></span><span></span><span></span><span></span></div>
+      <div class="sv-stat tl"><div class="sv-stat-num">4.2×</div><div class="sv-stat-label">Average ROAS</div></div>
+      <div class="sv-icon-big">💰</div>
+      <div class="sv-stat br"><div class="sv-stat-num">-38%</div><div class="sv-stat-label">Cost per acquisition</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section class="svc-section" id="content">
+  <div class="svc-layout reveal">
+    <div>
+      <div class="svc-num">03</div>
+      <h2 class="svc-title">Content<br>Marketing</h2>
+      <p class="svc-desc">Blog posts, landing pages, email sequences and social copy written in fluent English by trained Ugandan copywriters — SEO-optimised as standard, always on brief.</p>
+      <div class="svc-tags"><span class="stag green">Blog Writing</span><span class="stag green">Landing Pages</span><span class="stag green">Email Sequences</span></div>
+      <ul class="deliverables">
+        <li><span class="dl-dot green">✓</span>SEO-led content strategy mapped to your funnel</li>
+        <li><span class="dl-dot green">✓</span>Long-form blog posts (1,500–3,000 words)</li>
+        <li><span class="dl-dot green">✓</span>Conversion-focused landing page copy</li>
+        <li><span class="dl-dot green">✓</span>Email nurture sequences — welcome, onboarding, re-engage</li>
+        <li><span class="dl-dot green">✓</span>Monthly content calendar planning</li>
+      </ul>
+      <a href="contact.html" class="btn btn-forest">Get Started →</a>
+    </div>
+    <div class="svc-visual reveal-right" style="transition-delay:.15s">
+      <div class="sv-circles"><span></span><span></span><span></span><span></span></div>
+      <div class="sv-stat tl"><div class="sv-stat-num">8+</div><div class="sv-stat-label">Pieces per month</div></div>
+      <div class="sv-icon-big">✍️</div>
+      <div class="sv-stat br"><div class="sv-stat-num">100%</div><div class="sv-stat-label">SEO-optimised</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section class="svc-section" id="social">
+  <div class="svc-layout flip reveal">
+    <div>
+      <div class="svc-num">04</div>
+      <h2 class="svc-title">Social Media<br>Management</h2>
+      <p class="svc-desc">Content calendar, daily posting, community management and monthly analytics across Instagram, Facebook, X and LinkedIn. Your brand, always active — even while you sleep.</p>
+      <div class="svc-tags"><span class="stag blue">Instagram</span><span class="stag blue">Facebook</span><span class="stag blue">LinkedIn</span><span class="stag blue">X / Twitter</span></div>
+      <ul class="deliverables">
+        <li><span class="dl-dot blue">✓</span>Full content calendar built 30 days ahead</li>
+        <li><span class="dl-dot blue">✓</span>Daily posts across up to 4 platforms</li>
+        <li><span class="dl-dot blue">✓</span>Community management — replies, DMs, comments</li>
+        <li><span class="dl-dot blue">✓</span>Story and reel scripting & creative direction</li>
+        <li><span class="dl-dot blue">✓</span>Monthly growth analytics report</li>
+      </ul>
+      <a href="contact.html" class="btn btn-blue">Get Started →</a>
+    </div>
+    <div class="svc-visual reveal-left" style="transition-delay:.15s">
+      <div class="sv-circles"><span></span><span></span><span></span><span></span></div>
+      <div class="sv-stat tl"><div class="sv-stat-num">4</div><div class="sv-stat-label">Platforms managed</div></div>
+      <div class="sv-icon-big">📱</div>
+      <div class="sv-stat br"><div class="sv-stat-num">30/day</div><div class="sv-stat-label">Posts & engagement</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYTICS -->
+<section class="svc-section" id="analytics">
+  <div class="svc-layout reveal">
+    <div>
+      <div class="svc-num">05</div>
+      <h2 class="svc-title">Analytics &<br>Reporting</h2>
+      <p class="svc-desc">You can't improve what you can't measure. We set up, maintain and interpret your analytics stack — then translate the numbers into clear actions every month.</p>
+      <div class="svc-tags"><span class="stag gold">GA4</span><span class="stag gold">Conversion Tracking</span><span class="stag gold">Custom Dashboards</span></div>
+      <ul class="deliverables">
+        <li><span class="dl-dot gold">✓</span>Google Analytics 4 setup & configuration</li>
+        <li><span class="dl-dot gold">✓</span>Conversion tracking across all channels</li>
+        <li><span class="dl-dot gold">✓</span>Custom Looker Studio dashboard — your data, your view</li>
+        <li><span class="dl-dot gold">✓</span>Monthly performance review & recommendations</li>
+        <li><span class="dl-dot gold">✓</span>Attribution modelling — know what's really working</li>
+      </ul>
+      <a href="contact.html" class="btn btn-gold">Get Started →</a>
+    </div>
+    <div class="svc-visual reveal-right" style="transition-delay:.15s">
+      <div class="sv-circles"><span></span><span></span><span></span><span></span></div>
+      <div class="sv-stat tl"><div class="sv-stat-num">GA4</div><div class="sv-stat-label">Full setup included</div></div>
+      <div class="sv-icon-big">📊</div>
+      <div class="sv-stat br"><div class="sv-stat-num">Live</div><div class="sv-stat-label">Dashboard access</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="svcs-cta">
+  <span class="lbl light" style="display:block;margin-bottom:.75rem">All Services Included</span>
+  <h2>Every plan includes<br>multiple services.</h2>
+  <p>No picking and choosing per service. Our plans bundle what you need to grow at a single flat rate.</p>
+  <div class="svcs-cta-btns">
+    <a href="pricing.html" class="btn btn-gold">View Pricing Plans →</a>
+    <a href="contact.html" class="btn btn-outline-w">Talk to Our Team</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="nav-wordmark">Pearl Digital<small>Uganda · Global</small></div><p>Uganda's first export-grade digital marketing studio.</p></div>
+    <div class="footer-col"><h4>Platform</h4><ul><li><a href="services.html">Our Services</a></li><li><a href="pricing.html">Pricing Plans</a></li><li><a href="talent.html">Join as Talent</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="#seo">SEO</a></li><li><a href="#ppc">Paid Advertising</a></li><li><a href="#content">Content Marketing</a></li><li><a href="#social">Social Media</a></li><li><a href="#analytics">Analytics</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:contact@pearldigital.ug">contact@pearldigital.ug</a></li><li><a href="#">Kampala, Uganda</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Pearl Digital UG</p><p class="footer-powered">Powered by <a href="https://futuregensoft.com" target="_blank">Future Generations Software</a> · Elmot Ltd &amp; UIA</p></div>
+</footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>io.observe(el));
+</script>
+</body></html>
