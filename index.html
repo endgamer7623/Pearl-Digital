@@ -2,664 +2,790 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pearl Digital — Africa's Digital Marketing Studio</title>
+<title>Pearl Digital — Uganda's Digital Marketing Studio</title>
+<link rel="icon" type="image/png" href="mainlogo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ─── RESET ─── */
+/* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
 img{display:block;max-width:100%}
+body{font-family:'DM Sans',sans-serif;background:#080808;color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-/* ─── TOKENS ─── */
+/* ── BRAND TOKENS ── */
 :root{
-  --forest:#071b10;
-  --forest-2:#0d3320;
-  --forest-3:#165c38;
-  --forest-4:#1e8a52;
-  --gold:#c9a44c;
-  --gold-2:#dfc074;
-  --gold-3:#f5e4a8;
-  --blue:#6ecde8;
-  --blue-2:#3db8d8;
-  --blue-3:#1a8fb0;
-  --blue-pale:#e2f4fa;
-  --ink:#040b06;
-  --ink-2:#0a1a0e;
-  --cream:#f6f1e8;
-  --cream-2:#eee8dd;
+  --black:#080808;
+  --black-2:#0e0e0e;
+  --black-3:#161616;
+  --black-4:#1e1e1e;
+  --black-5:#2a2a2a;
+  --yellow:#f5c400;
+  --yellow-2:#ffd740;
+  --yellow-pale:#fffbe6;
+  --red:#cc0000;
+  --red-2:#e60000;
+  --red-pale:#fff0f0;
   --white:#ffffff;
-  --tx-dark:#0d1f12;
-  --tx-mid:#3a5244;
-  --tx-mute:#7a9488;
-  --bd:rgba(10,26,14,0.1);
-  --fs-xs:11px; --fs-sm:13px; --fs-base:15px; --fs-md:17px;
-  --fs-lg:1.35rem; --fs-xl:1.75rem; --fs-2xl:2.5rem; --fs-3xl:3.5rem;
+  --grey:#9a9a9a;
+  --grey-2:#666;
+  --grey-3:#3a3a3a;
+  --border:rgba(255,255,255,0.07);
+  --border-light:rgba(255,255,255,0.12);
 }
 
-/* ─── BASE ─── */
-body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--tx-dark);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+/* ── TYPOGRAPHY ── */
+.font-display{font-family:'Syne',sans-serif}
 
-/* ─── NAV ─── */
-.site-nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;
-  height:68px;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 5%;
-  transition:background .3s,border-color .3s;
+/* ── NAV ── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  height:70px;display:flex;align-items:center;
+  padding:0 4%;transition:all .3s;
 }
-.site-nav.solid,.site-nav.always-solid{
-  background:rgba(4,11,6,.94);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.05);
+.nav.stuck{
+  background:rgba(8,8,8,.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
 }
-.nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none}
-.nav-gem{
-  width:34px;height:34px;border-radius:50%;
-  background:var(--forest-2);border:1px solid rgba(201,164,76,.35);
-  display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;
-}
-.nav-wordmark{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#fff;letter-spacing:-.4px;line-height:1}
-.nav-wordmark small{display:block;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.35);font-weight:500;text-transform:uppercase;margin-top:2px}
-.nav-links{display:flex;align-items:center;gap:2.25rem;list-style:none}
-.nav-links a{font-size:13.5px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;position:relative;transition:color .2s;letter-spacing:.1px}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .2s;border-radius:1px}
-.nav-links a:hover,a.nav-active{color:#fff}
-.nav-links a:hover::after,a.nav-active::after{width:100%}
+.nav-logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;flex-shrink:0}
+.nav-logo img.secondary{height:36px;width:auto}
+.nav-center{flex:1;display:flex;justify-content:center}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s;letter-spacing:.1px}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-right{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.nav-signin{font-size:13.5px;font-weight:500;color:rgba(255,255,255,.55);text-decoration:none;padding:.45rem .9rem;border-radius:6px;transition:all .2s}
+.nav-signin:hover{color:#fff;background:rgba(255,255,255,.06)}
 .nav-cta{
-  background:var(--gold);color:var(--forest) !important;
-  padding:.5rem 1.35rem;border-radius:6px;font-weight:700 !important;
-  font-size:13px !important;letter-spacing:.3px;transition:all .2s !important;
+  background:var(--yellow);color:#000;
+  padding:.5rem 1.25rem;border-radius:6px;
+  font-size:13.5px;font-weight:700;text-decoration:none;
+  transition:all .2s;letter-spacing:.2px;
+  display:flex;align-items:center;gap:.4rem;
 }
-.nav-cta:hover{background:var(--gold-2) !important}
-.nav-cta::after{display:none !important}
-.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.nav-ham span{display:block;width:24px;height:1.5px;background:#fff;transition:all .3s}
-@media(max-width:900px){
-  .nav-links{display:none}
-  .nav-ham{display:flex}
-}
+.nav-cta:hover{background:var(--yellow-2);transform:translateY(-1px)}
 
-/* ─── FOOTER ─── */
-.site-footer{background:var(--ink);padding:5rem 5% 0}
-.footer-grid{
-  display:grid;
-  grid-template-columns:1.8fr 1fr 1fr 1.2fr;
-  gap:3rem;
-  padding-bottom:4rem;
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-.footer-brand{}
-.footer-brand .nav-wordmark{font-size:18px}
-.footer-brand p{font-size:13.5px;color:rgba(255,255,255,.35);line-height:1.8;margin-top:1rem;font-weight:300;max-width:260px}
-.footer-col h4{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1.25rem}
-.footer-col ul{list-style:none}
-.footer-col li{margin-bottom:.65rem}
-.footer-col a{font-size:13.5px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;font-weight:300}
-.footer-col a:hover{color:var(--gold)}
-.footer-bottom{
-  padding:1.5rem 0;
-  display:flex;align-items:center;justify-content:space-between;
-  font-size:12px;color:rgba(255,255,255,.2);
-}
-.footer-powered a{color:rgba(110,205,232,.5);text-decoration:none;font-weight:500;transition:color .2s}
-.footer-powered a:hover{color:var(--blue)}
+/* ── PAGE SECTIONS ── */
+.sec{padding:6rem 4%}
+.sec-sm{padding:4rem 4%}
+.inner{max-width:1200px;margin:0 auto}
 
-/* ─── PAGE HEADER (inner pages) ─── */
-.page-header{
-  padding:8.5rem 5% 5rem;
-  background:var(--ink);
-  position:relative;overflow:hidden;
-}
-.ph-bg-num{
-  position:absolute;right:-2vw;bottom:-4vw;
-  font-family:'Syne',sans-serif;font-size:28vw;font-weight:900;
-  color:rgba(255,255,255,.025);line-height:.9;letter-spacing:-10px;
-  pointer-events:none;white-space:nowrap;
-}
-.ph-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:1rem}
-.ph-label.gold{color:var(--gold)}
-.ph-label.blue{color:var(--blue)}
-.ph-h1{
-  font-family:'Syne',sans-serif;font-size:clamp(3rem,6vw,6rem);
-  font-weight:900;line-height:.95;letter-spacing:-3px;color:#fff;
-  margin-bottom:1.5rem;
-}
-.ph-sub{font-size:var(--fs-lg);font-weight:300;color:rgba(255,255,255,.45);max-width:520px;line-height:1.8}
-
-/* ─── UTILITIES ─── */
-.container{max-width:1240px;margin:0 auto;padding:0 5%}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
-.lbl{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.75rem;display:block}
-.lbl.gold{color:var(--gold)}
-.lbl.blue{color:var(--blue-3)}
-.lbl.green{color:var(--forest-4)}
-.lbl.light{color:rgba(255,255,255,.4)}
-h2.sec-head{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,4.5vw,4rem);font-weight:900;line-height:1;letter-spacing:-2.5px;color:var(--tx-dark)}
-h2.sec-head.white{color:#fff}
-.sec-lead{font-size:var(--fs-lg);font-weight:300;color:var(--tx-mid);line-height:1.85;margin-top:.85rem}
-.sec-lead.light{color:rgba(255,255,255,.45)}
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .65s ease,transform .65s ease}
-.reveal.in{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .65s ease,transform .65s ease}
-.reveal-left.in{opacity:1;transform:translateX(0)}
-.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .65s ease,transform .65s ease}
-.reveal-right.in{opacity:1;transform:translateX(0)}
-.btn{
+/* ── LABELS ── */
+.label{
   display:inline-flex;align-items:center;gap:.5rem;
-  padding:.9rem 2rem;border-radius:7px;font-size:14px;font-weight:600;
-  text-decoration:none;border:none;cursor:pointer;letter-spacing:.3px;
-  transition:all .25s;font-family:'Outfit',sans-serif;
+  font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:1rem;
 }
-.btn-gold{background:var(--gold);color:var(--forest)}
-.btn-gold:hover{background:var(--gold-2);transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,164,76,.3)}
-.btn-forest{background:var(--forest-2);color:var(--gold-2)}
-.btn-forest:hover{background:var(--forest-3);transform:translateY(-2px);box-shadow:0 10px 28px rgba(7,27,16,.3)}
-.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.25)}
-.btn-outline-w:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.06)}
-.btn-outline-d{background:transparent;color:var(--tx-dark);border:1.5px solid rgba(10,26,14,.2)}
-.btn-outline-d:hover{border-color:var(--forest-2);background:rgba(7,27,16,.04)}
-.btn-blue{background:var(--blue-2);color:#fff}
-.btn-blue:hover{background:var(--blue-3);transform:translateY(-2px);box-shadow:0 12px 28px rgba(61,184,216,.3)}
+.label-yellow{color:var(--yellow)}
+.label-red{color:var(--red-2)}
+.label-grey{color:var(--grey)}
+.label::before{content:'';width:20px;height:2px;border-radius:1px;flex-shrink:0}
+.label-yellow::before{background:var(--yellow)}
+.label-red::before{background:var(--red-2)}
+.label-grey::before{background:var(--grey)}
 
-/* ── INDEX PAGE SPECIFIC ── */
-#hero{position:relative;width:100%;height:100vh;min-height:720px;display:flex;align-items:center;overflow:hidden}
-#heroCanvas{position:absolute;inset:0;width:100%;height:100%}
-.hero-fade{position:absolute;inset:0;background:linear-gradient(120deg,rgba(4,11,6,.85) 0%,rgba(4,11,6,.4) 55%,rgba(4,11,6,.75) 100%)}
-.hero-inner{position:relative;z-index:3;padding:0 5%;width:100%;max-width:1240px;margin:0 auto}
-.hero-kicker{
-  display:inline-flex;align-items:center;gap:.65rem;
-  font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
-  color:var(--blue);border:1px solid rgba(110,205,232,.25);
-  padding:.45rem 1.1rem;border-radius:100px;background:rgba(110,205,232,.06);
-  margin-bottom:2.5rem;
+/* ── HEADINGS ── */
+h1.display,h2.display{
+  font-family:'Syne',sans-serif;font-weight:900;
+  line-height:.95;letter-spacing:-3px;
 }
-.hero-kicker::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--blue);animation:blink 2s ease-in-out infinite;flex-shrink:0}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
-.hero-h1{
-  font-family:'Syne',sans-serif;font-size:clamp(4rem,9vw,9.5rem);
-  font-weight:900;line-height:.92;letter-spacing:-5px;color:#fff;
-  margin-bottom:2rem;
-}
-.hero-h1 em{
-  font-style:italic;font-family:'Cormorant Garamond',serif;font-weight:600;
-  color:transparent;
-  -webkit-text-stroke:1.5px var(--gold);
-  letter-spacing:-2px;
-  display:block;font-size:.85em;
-}
-.hero-h1 .blue-stroke{color:transparent;-webkit-text-stroke:1.5px var(--blue);display:block}
-.hero-row{display:flex;align-items:flex-end;justify-content:space-between;gap:3rem;flex-wrap:wrap}
-.hero-left{flex:1;min-width:280px}
-.hero-right{max-width:380px}
-.hero-sub{font-size:var(--fs-md);font-weight:300;color:rgba(255,255,255,.6);line-height:1.85;margin-bottom:2rem}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
-.hero-stats-vertical{display:flex;flex-direction:column;gap:1.25rem;align-items:flex-end}
-.hsv-item{text-align:right}
-.hsv-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:900;line-height:1;letter-spacing:-1px}
-.hsv-num.gold{color:var(--gold)}
-.hsv-num.blue{color:var(--blue)}
-.hsv-label{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.5px;margin-top:2px}
-.hero-line{width:40px;height:2px;background:var(--gold);border-radius:1px;margin-left:auto;margin-bottom:.6rem}
+h1.display{font-size:clamp(3.5rem,7.5vw,8rem)}
+h2.display{font-size:clamp(2.5rem,5vw,5rem)}
+h2.display-sm{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,3.5vw,3.2rem);line-height:1;letter-spacing:-2px}
+.sub-text{font-size:1.1rem;font-weight:300;color:rgba(255,255,255,.55);line-height:1.85}
+.sub-text-dark{font-size:1.05rem;font-weight:300;color:rgba(0,0,0,.55);line-height:1.85}
 
-/* Marquee */
-.marquee-wrap{background:var(--gold);overflow:hidden;padding:.85rem 0;white-space:nowrap}
-.marquee-track{display:inline-flex;animation:marqueeRun 30s linear infinite}
-.marquee-track:hover{animation-play-state:paused}
-.marquee-item{
-  font-family:'Syne',sans-serif;font-size:12px;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;color:var(--forest);
-  padding:0 2.5rem;
-}
-.marquee-dot{color:rgba(7,27,16,.35);margin-right:-1.5rem}
-@keyframes marqueeRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;border:none;cursor:pointer;letter-spacing:.2px;transition:all .25s;font-family:'DM Sans',sans-serif}
+.btn-yellow{background:var(--yellow);color:#000}
+.btn-yellow:hover{background:var(--yellow-2);transform:translateY(-2px);box-shadow:0 12px 28px rgba(245,196,0,.25)}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-2);transform:translateY(-2px);box-shadow:0 12px 28px rgba(204,0,0,.25)}
+.btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.25)}
+.btn-outline:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.06)}
+.btn-outline-dark{background:transparent;color:#000;border:1.5px solid rgba(0,0,0,.2)}
+.btn-outline-dark:hover{border-color:#000;background:rgba(0,0,0,.04)}
+.btn-dark{background:var(--black-3);color:#fff;border:1px solid var(--border)}
+.btn-dark:hover{background:var(--black-4);transform:translateY(-1px)}
 
-/* Statement section */
-.statement-sec{background:var(--ink-2);padding:7rem 5%;position:relative;overflow:hidden}
-.statement-sec::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(110,205,232,.04) 0%,transparent 70%);
-}
-.stmt-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:5rem;align-items:center;position:relative;z-index:2}
-.stmt-big{
-  font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5vw,5.5rem);
-  font-weight:900;line-height:.95;letter-spacing:-3px;color:#fff;
-}
-.stmt-big .gold-word{color:var(--gold)}
-.stmt-big .blue-word{color:var(--blue)}
-.stmt-right p{font-size:var(--fs-lg);font-weight:300;color:rgba(255,255,255,.45);line-height:1.85;margin-bottom:2rem}
-.stmt-numbers{display:flex;gap:2rem;margin-top:2.5rem}
-.sn-item{border-left:2px solid rgba(201,164,76,.3);padding-left:1rem}
-.sn-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:900;color:var(--gold-2);line-height:1}
-.sn-label{font-size:11px;color:rgba(255,255,255,.35);margin-top:3px;letter-spacing:.5px}
+/* ── CARDS ── */
+.card{background:var(--black-3);border:1px solid var(--border);border-radius:16px;transition:all .3s}
+.card:hover{border-color:var(--border-light);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.4)}
+.card-yellow{background:var(--yellow);color:#000}
+.card-red{background:var(--red);color:#fff}
 
-/* Services preview */
-.services-preview{padding:7rem 5% 0;background:var(--cream)}
-.sp-header{display:grid;grid-template-columns:1fr auto;align-items:end;margin-bottom:4rem;gap:2rem}
-.sp-header a{font-size:14px;font-weight:600;color:var(--forest-3);text-decoration:none;white-space:nowrap;transition:color .2s}
-.sp-header a:hover{color:var(--forest)}
-.services-wall{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:2px;background:rgba(10,26,14,.08);border-radius:20px;overflow:hidden}
-.sw-panel{padding:3rem;position:relative;overflow:hidden;cursor:default;transition:all .3s}
-.sw-panel.large{grid-row:span 2;background:var(--forest);padding:3.5rem}
-.sw-panel.dark{background:var(--ink-2)}
-.sw-panel.mid{background:#0e2c1a}
-.sw-panel.light{background:var(--forest-2)}
-.sw-panel.blue-panel{background:#071828}
-.sw-panel.gold-panel{background:#1a1408}
-.sw-bg-num{
-  position:absolute;bottom:-1rem;right:-.5rem;
-  font-family:'Syne',sans-serif;font-size:9rem;font-weight:900;
-  color:rgba(255,255,255,.04);line-height:1;letter-spacing:-4px;pointer-events:none;
-}
-.sw-icon{font-size:2.2rem;margin-bottom:1.5rem;display:block}
-.sw-panel h3{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:.75rem;letter-spacing:-.5px;position:relative;z-index:2}
-.sw-panel.large h3{font-size:2rem;letter-spacing:-1px}
-.sw-panel p{font-size:13.5px;color:rgba(255,255,255,.45);line-height:1.75;font-weight:300;position:relative;z-index:2}
-.sw-link{
-  display:inline-flex;align-items:center;gap:.4rem;margin-top:1.5rem;
-  font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;
-  color:var(--gold);text-decoration:none;position:relative;z-index:2;transition:gap .2s;
-}
-.sw-link:hover{gap:.8rem}
-.sw-panel.large .sw-link{color:var(--gold-2)}
-.sw-tag{
-  display:inline-block;margin-top:1.25rem;
-  font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
-  padding:.3rem .75rem;border-radius:4px;position:relative;z-index:2;
-}
-.sw-tag.b{background:rgba(110,205,232,.1);border:1px solid rgba(110,205,232,.15);color:var(--blue)}
-.sw-tag.g{background:rgba(201,164,76,.1);border:1px solid rgba(201,164,76,.2);color:var(--gold)}
+/* ── DIVIDER ── */
+.divider{width:48px;height:3px;border-radius:2px;background:var(--yellow);margin:1.5rem 0}
+.divider-red{background:var(--red)}
 
-/* Big numbers section */
-.numbers-sec{padding:7rem 5%;background:var(--cream-2);position:relative;overflow:hidden}
-.numbers-sec::before{
-  content:'';position:absolute;top:-200px;right:-200px;
-  width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle,rgba(110,205,232,.07) 0%,transparent 70%);
-}
-.num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:24px;overflow:hidden;border:1px solid rgba(10,26,14,.08);background:rgba(10,26,14,.04);position:relative;z-index:2}
-.num-cell{
-  padding:3rem 2rem;text-align:center;border-right:1px solid rgba(10,26,14,.08);
-  background:white;transition:background .3s;
-}
-.num-cell:last-child{border-right:none}
-.num-cell:hover{background:#fafaf7}
-.big-num{
-  font-family:'Syne',sans-serif;font-size:clamp(3rem,5vw,5rem);font-weight:900;
-  line-height:1;letter-spacing:-3px;margin-bottom:.5rem;
-}
-.big-num.gold{background:linear-gradient(135deg,var(--gold),var(--gold-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.big-num.blue{background:linear-gradient(135deg,var(--blue-2),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.big-num.green{background:linear-gradient(135deg,var(--forest-3),var(--forest-4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.num-label{font-size:13px;color:var(--tx-mute);line-height:1.5;font-weight:300}
+/* ── TAGS ── */
+.tag{display:inline-block;padding:.3rem .75rem;border-radius:4px;font-size:11px;font-weight:600;letter-spacing:.5px}
+.tag-yellow{background:rgba(245,196,0,.1);border:1px solid rgba(245,196,0,.2);color:var(--yellow)}
+.tag-red{background:rgba(204,0,0,.1);border:1px solid rgba(204,0,0,.2);color:var(--red-2)}
+.tag-white{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7)}
 
-/* Process */
-.process-sec{background:var(--forest);padding:7rem 5%;position:relative;overflow:hidden}
-.process-sec::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M0 0h30v30H0V0zm30 30h30v30H30V30z'/%3E%3C/g%3E%3C/svg%3E")}
-.process-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:5rem;position:relative;z-index:2;gap:2rem;flex-wrap:wrap}
-.process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.04);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.06);position:relative;z-index:2}
-.ps{padding:2.75rem;background:#0b2415;transition:background .3s;position:relative;overflow:hidden}
-.ps:hover{background:#0e2e1b}
-.ps::before{
-  content:attr(data-n);
-  position:absolute;bottom:-1.5rem;right:.5rem;
-  font-family:'Syne',sans-serif;font-size:8rem;font-weight:900;
-  color:rgba(255,255,255,.03);line-height:1;
-}
-.ps-icon{font-size:2rem;margin-bottom:1.5rem;display:block}
-.ps h3{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.65rem;letter-spacing:-.3px}
-.ps p{font-size:13.5px;color:rgba(255,255,255,.4);line-height:1.75;font-weight:300}
-.ps-arrow{
-  display:inline-flex;align-items:center;gap:.4rem;margin-top:1.25rem;
-  font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
-  color:var(--blue);
+/* ── FOOTER ── */
+.footer{background:#050505;border-top:1px solid var(--border);padding:4rem 4% 0}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border)}
+.footer-brand img{height:48px;width:auto;margin-bottom:1.25rem}
+.footer-brand p{font-size:13.5px;color:var(--grey);line-height:1.8;font-weight:300;max-width:240px}
+.footer-col h5{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey-2);margin-bottom:1.25rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.6rem}
+.footer-col a{font-size:13.5px;color:var(--grey);text-decoration:none;transition:color .2s;font-weight:300}
+.footer-col a:hover{color:var(--yellow)}
+.footer-bottom{padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--grey-2)}
+.footer-bottom a{color:rgba(245,196,0,.5);text-decoration:none;font-weight:500;transition:color .2s}
+.footer-bottom a:hover{color:var(--yellow)}
+
+/* ── REVEAL ANIMATIONS ── */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+.rv-l{opacity:0;transform:translateX(-24px);transition:opacity .6s ease,transform .6s ease}
+.rv-l.in{opacity:1;transform:translateX(0)}
+.rv-r{opacity:0;transform:translateX(24px);transition:opacity .6s ease,transform .6s ease}
+.rv-r.in{opacity:1;transform:translateX(0)}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .nav-center{display:none}
+  .nav-signin{display:none}
+  h1.display{letter-spacing:-2px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-bottom{flex-direction:column;gap:.75rem;text-align:center}
 }
 
-/* Final CTA */
-.home-cta{
-  padding:8rem 5%;background:var(--ink-2);
+/* ── INDEX SPECIFIC ── */
+/* HERO */
+.hero{
+  min-height:100vh;padding:0 4%;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:4rem;
   position:relative;overflow:hidden;
-  clip-path:polygon(0 5%,100% 0,100% 100%,0 100%);
-  margin-top:-4rem;
+  background:#080808;
 }
-.home-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 30% 50%,rgba(201,164,76,.05) 0%,transparent 70%)}
-.cta-inner{
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 10% 50%,rgba(245,196,0,.06) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero-left{padding:8rem 0 5rem;position:relative;z-index:2}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--yellow);background:rgba(245,196,0,.08);
+  border:1px solid rgba(245,196,0,.2);
+  padding:.45rem 1rem;border-radius:100px;margin-bottom:2rem;
+}
+.hero-eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--yellow);animation:blink 2s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.hero h1{
+  font-family:'Syne',sans-serif;font-size:clamp(3.8rem,6.5vw,7.5rem);
+  font-weight:900;line-height:.93;letter-spacing:-4px;color:#fff;
+  margin-bottom:1.75rem;
+}
+.hero h1 .y{color:var(--yellow)}
+.hero h1 .r{color:var(--red-2)}
+.hero-sub{
+  font-size:1.1rem;font-weight:300;
+  color:rgba(255,255,255,.55);line-height:1.85;
+  max-width:480px;margin-bottom:2.5rem;
+}
+.hero-sub strong{color:rgba(255,255,255,.85);font-weight:500}
+.hero-btns{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.hero-proof{
+  display:flex;align-items:center;gap:1.5rem;
+  padding-top:2rem;border-top:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.hp-item{display:flex;align-items:center;gap:.5rem;font-size:13px;color:var(--grey);font-weight:300}
+.hp-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.hp-dot.y{background:var(--yellow)}
+.hp-dot.r{background:var(--red-2)}
+.hp-dot.w{background:rgba(255,255,255,.4)}
+
+/* HERO RIGHT — Chatix-style floating visual */
+.hero-right{
   position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  padding:8rem 0 5rem;
+}
+.hero-visual{
+  position:relative;width:100%;max-width:580px;
+}
+/* Main dashboard card */
+.hv-main{
+  background:var(--black-3);border:1px solid rgba(255,255,255,.1);
+  border-radius:18px;overflow:hidden;
+  box-shadow:0 40px 80px rgba(0,0,0,.6);
+}
+.hv-topbar{
+  background:var(--black-4);border-bottom:1px solid var(--border);
+  padding:.75rem 1.25rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.hv-dots span{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:4px}
+.hv-dots .d1{background:#cc0000}.hv-dots .d2{background:#f5c400}.hv-dots .d3{background:#22cc44}
+.hv-title{font-size:12px;color:var(--grey);font-weight:500;margin-left:.5rem;letter-spacing:.3px}
+.hv-body{padding:1.5rem}
+/* Metric row */
+.hv-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.25rem}
+.hv-metric{background:var(--black-4);border-radius:10px;padding:1rem;border:1px solid var(--border)}
+.hv-m-num{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;line-height:1;margin-bottom:.25rem}
+.hv-m-num.y{color:var(--yellow)}.hv-m-num.r{color:var(--red-2)}.hv-m-num.w{color:#fff}
+.hv-m-label{font-size:11px;color:var(--grey);font-weight:400}
+.hv-m-change{font-size:10px;font-weight:600;margin-top:.2rem}
+.hv-m-change.up{color:#22cc44}.hv-m-change.down{color:var(--red-2)}
+/* Chart bar */
+.hv-chart{background:var(--black-4);border-radius:10px;padding:1.25rem;margin-bottom:.75rem;border:1px solid var(--border)}
+.hv-chart-label{font-size:11px;color:var(--grey);margin-bottom:1rem;font-weight:500;letter-spacing:.5px;text-transform:uppercase}
+.hv-bars{display:flex;align-items:flex-end;gap:.4rem;height:60px}
+.hv-bar{flex:1;border-radius:4px 4px 0 0;transition:height .3s}
+.bar-y{background:var(--yellow);opacity:.8}
+.bar-r{background:var(--red);opacity:.7}
+.bar-grey{background:var(--grey-3)}
+.bar-active{opacity:1 !important;box-shadow:0 0 12px rgba(245,196,0,.3)}
+/* Campaign list */
+.hv-campaigns{display:flex;flex-direction:column;gap:.5rem}
+.hv-camp{
+  display:flex;align-items:center;gap:.75rem;
+  background:var(--black-4);border-radius:8px;padding:.7rem .9rem;
+  border:1px solid var(--border);
+}
+.hv-camp-icon{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.hv-camp-name{font-size:13px;font-weight:500;color:#fff;flex:1}
+.hv-camp-status{font-size:11px;font-weight:600;padding:.2rem .5rem;border-radius:4px}
+.cs-live{background:rgba(34,204,68,.1);color:#22cc44}
+.cs-review{background:rgba(245,196,0,.1);color:var(--yellow)}
+.cs-paused{background:rgba(255,255,255,.07);color:var(--grey)}
+.hv-camp-num{font-size:12px;color:var(--grey);font-family:'DM Mono',monospace;font-weight:500}
+
+/* Floating badge cards */
+.hv-badge{
+  position:absolute;
+  background:rgba(14,14,14,.92);backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.12);border-radius:12px;
+  padding:.85rem 1.1rem;box-shadow:0 8px 24px rgba(0,0,0,.5);
+}
+.hv-badge.top-right{top:-1.5rem;right:-2rem}
+.hv-badge.bot-left{bottom:-1.5rem;left:-2rem}
+.hb-num{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;line-height:1}
+.hb-num.y{color:var(--yellow)}.hb-num.r{color:var(--red-2)}
+.hb-label{font-size:11px;color:var(--grey);margin-top:2px;font-weight:300}
+
+/* ── TICKER ── */
+.ticker{overflow:hidden;background:var(--yellow);padding:.7rem 0;white-space:nowrap}
+.ticker-track{display:inline-flex;animation:tick 35s linear infinite}
+.ticker-item{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#000;padding:0 2.5rem}
+.ticker-sep{color:rgba(0,0,0,.3);margin-right:-2rem}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── INTRO SPLIT ── */
+.intro-split{
+  padding:6rem 4%;background:var(--black-2);
+  display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;
+}
+.intro-left h2{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,4.5vw,4.2rem);font-weight:900;letter-spacing:-3px;line-height:.95;margin-bottom:1.5rem}
+.intro-left h2 span.y{color:var(--yellow)}
+.intro-left h2 span.r{color:var(--red-2)}
+.intro-right p{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1.5rem}
+.intro-right p:last-of-type{margin-bottom:2rem}
+/* Uganda flag accent */
+.flag-strip{display:flex;height:4px;border-radius:2px;overflow:hidden;gap:2px;width:60px;margin-bottom:1.5rem}
+.flag-strip span{flex:1;border-radius:1px}
+.fs-b{background:#000}.fs-y{background:var(--yellow)}.fs-r{background:var(--red)}
+
+/* ── SERVICES GRID ── */
+.services-home{padding:6rem 4%;background:#080808}
+.sh-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;gap:2rem;flex-wrap:wrap}
+.sh-head a{font-size:14px;font-weight:600;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;white-space:nowrap}
+.sh-head a:hover{color:var(--yellow)}
+/* Bento-style grid inspired by Chatix layout */
+.svc-bento{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:2px;
+  border-radius:20px;overflow:hidden;
+  background:var(--black-3);
+  border:1px solid var(--border);
+}
+.sb{padding:2.5rem;background:var(--black-3);position:relative;overflow:hidden;cursor:default;transition:background .3s}
+.sb.tall{grid-row:span 2;background:var(--black-2)}
+.sb.yellow-cell{background:#111100}
+.sb.red-cell{background:#110000}
+.sb:hover{background:var(--black-4)}
+.sb.tall:hover{background:#131313}
+.sb.yellow-cell:hover{background:#161200}
+.sb.red-cell:hover{background:#160000}
+.sb-bg{
+  position:absolute;bottom:-2rem;right:-1rem;
+  font-family:'Syne',sans-serif;font-size:7rem;font-weight:900;
+  color:rgba(255,255,255,.025);line-height:1;letter-spacing:-4px;pointer-events:none;
+}
+.sb-icon{font-size:2rem;margin-bottom:1.25rem;display:block}
+.sb h3{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:.6rem;letter-spacing:-.3px}
+.sb.tall h3{font-size:1.75rem;letter-spacing:-.5px}
+.sb p{font-size:13.5px;color:rgba(255,255,255,.45);line-height:1.7;font-weight:300}
+.sb-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.25rem;font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--yellow);text-decoration:none;transition:gap .2s}
+.sb-link:hover{gap:.8rem}
+.sb.red-cell .sb-link{color:var(--red-2)}
+
+/* ── MISSION FULL BLEED ── */
+.mission{
+  padding:7rem 4%;
+  background:var(--yellow);
+  position:relative;overflow:hidden;
+}
+.mission::before{content:'';position:absolute;bottom:-5rem;right:-5rem;width:500px;height:500px;border-radius:50%;background:rgba(0,0,0,.06)}
+.mission-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.mission-left h2{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,5vw,5rem);font-weight:900;letter-spacing:-3px;line-height:.93;color:#000;margin-bottom:1.5rem}
+.mission-left h2 em{font-style:italic;color:rgba(0,0,0,.45)}
+.mission-left p{font-size:1.05rem;font-weight:400;color:rgba(0,0,0,.6);line-height:1.85;max-width:420px}
+.mission-right{}
+.mission-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.ms{background:rgba(0,0,0,.07);border-radius:14px;padding:1.5rem;transition:background .2s}
+.ms:hover{background:rgba(0,0,0,.1)}
+.ms-num{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:900;line-height:1;color:#000;letter-spacing:-2px}
+.ms-label{font-size:13px;color:rgba(0,0,0,.55);margin-top:.35rem;font-weight:400;line-height:1.4}
+.ms.big{grid-column:span 2;background:rgba(0,0,0,.1)}
+.ms.big .ms-num{font-size:3.5rem}
+
+/* ── HOW IT WORKS ── */
+.hiw{padding:6rem 4%;background:var(--black-2)}
+.hiw-inner{max-width:1200px;margin:0 auto}
+.hiw-top{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:4rem;flex-wrap:wrap}
+.hiw-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.hiw-step{padding:2.25rem;background:var(--black-3);border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden;transition:all .3s}
+.hiw-step:hover{border-color:rgba(245,196,0,.2);transform:translateY(-3px)}
+.step-n{font-family:'Syne',sans-serif;font-size:4rem;font-weight:900;line-height:1;color:rgba(245,196,0,.12);position:absolute;top:.5rem;right:.75rem;letter-spacing:-3px}
+.hiw-step-icon{font-size:2rem;margin-bottom:1.25rem;display:block}
+.hiw-step h4{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.5rem;letter-spacing:-.2px}
+.hiw-step p{font-size:13.5px;color:rgba(255,255,255,.45);line-height:1.7;font-weight:300}
+.hiw-step .step-cta{display:block;margin-top:1.25rem;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--yellow)}
+
+/* ── WHO WE SERVE ── */
+.who{padding:6rem 4%;background:#080808}
+.who-inner{max-width:1200px;margin:0 auto}
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3.5rem}
+.who-card{
+  border-radius:18px;padding:2.5rem;position:relative;overflow:hidden;
+  border:1px solid var(--border);background:var(--black-3);transition:all .3s;
+}
+.who-card:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.who-card.yellow-card{background:var(--yellow);border-color:var(--yellow)}
+.who-card.red-card{background:var(--red);border-color:var(--red)}
+.wc-icon{font-size:2.5rem;margin-bottom:1.25rem;display:block}
+.who-card h3{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;letter-spacing:-.5px;color:#fff;margin-bottom:.75rem;line-height:1.1}
+.who-card.yellow-card h3,.who-card.yellow-card p{color:#000}
+.who-card.red-card h3{color:#fff}
+.who-card p{font-size:14px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:1.5rem}
+.who-card.yellow-card p{color:rgba(0,0,0,.65)}
+.wc-bg-num{position:absolute;bottom:-1.5rem;right:0;font-family:'Syne',sans-serif;font-size:8rem;font-weight:900;color:rgba(255,255,255,.06);line-height:1;pointer-events:none;letter-spacing:-5px}
+.who-card.yellow-card .wc-bg-num{color:rgba(0,0,0,.07)}
+
+/* ── TRUST / CLIENTS ── */
+.trust{padding:5rem 4%;background:var(--black-2);border-top:1px solid var(--border)}
+.trust-inner{max-width:1200px;margin:0 auto;text-align:center}
+.trust-label{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey-2);margin-bottom:2rem}
+.trust-markets{display:flex;justify-content:center;align-items:center;gap:2.5rem;flex-wrap:wrap}
+.tm{display:flex;align-items:center;gap:.65rem;font-size:14px;color:rgba(255,255,255,.35);font-weight:300;transition:color .2s}
+.tm:hover{color:rgba(255,255,255,.7)}
+.tm-flag{font-size:1.4rem}
+.tm-divider{width:1px;height:24px;background:var(--border)}
+
+/* ── CTA STRIP ── */
+.cta-strip{padding:5rem 4%;background:var(--black)}
+.cta-strip-inner{
+  max-width:1200px;margin:0 auto;
+  background:var(--black-3);border:1px solid var(--border);
+  border-radius:20px;padding:3.5rem;
   display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;
-  max-width:1000px;
 }
-.cta-text .lbl{margin-bottom:.75rem}
-.cta-text h2{
-  font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3.5rem);
-  font-weight:900;letter-spacing:-2px;color:#fff;line-height:1;
-}
-.cta-text h2 span{color:var(--gold)}
-.cta-btns{display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
+.cs-text h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;letter-spacing:-2px;color:#fff;line-height:1;margin-bottom:.75rem}
+.cs-text h2 span{color:var(--yellow)}
+.cs-text p{font-size:15px;font-weight:300;color:rgba(255,255,255,.45);line-height:1.7}
+.cs-btns{display:flex;flex-direction:column;gap:.75rem;align-items:flex-start;flex-shrink:0}
 
 @media(max-width:900px){
-  .hero-h1{letter-spacing:-3px}
+  .hero{grid-template-columns:1fr;gap:0;padding-top:5rem}
   .hero-right{display:none}
-  .stmt-grid{grid-template-columns:1fr;gap:3rem}
-  .sp-header{grid-template-columns:1fr;gap:1rem}
-  .services-wall{grid-template-columns:1fr}
-  .sw-panel.large{grid-row:span 1}
-  .num-grid{grid-template-columns:1fr 1fr}
-  .process-steps{grid-template-columns:1fr}
-  .cta-inner{grid-template-columns:1fr}
-  .home-cta{clip-path:none;margin-top:0}
-  .stmt-numbers{flex-wrap:wrap;gap:1.5rem}
+  .hero-left{padding:6rem 0 3rem}
+  .intro-split,.mission-inner,.hiw-top{grid-template-columns:1fr;gap:3rem}
+  .svc-bento{grid-template-columns:1fr}
+  .sb.tall{grid-row:span 1}
+  .hiw-steps{grid-template-columns:1fr}
+  .who-grid{grid-template-columns:1fr}
+  .cta-strip-inner{grid-template-columns:1fr}
+  .cs-btns{flex-direction:row;flex-wrap:wrap}
 }
 </style>
 </head>
 <body>
 
-<nav class="site-nav always-solid" id="siteNav">
-  <a href="index.html" class="nav-logo">
-    <div class="nav-gem">💎</div>
-    <div class="nav-wordmark">Pearl Digital<small>Uganda · Global</small></div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="nav-active">Home</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="pricing.html">Pricing</a></li>
-    <li><a href="talent.html">Join as Talent</a></li>
-    <li><a href="contact.html" class="nav-cta">Get Started</a></li>
-  </ul>
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo"><img src="secondarylogo.png" alt="Pearl Digital" class="secondary"></a>
+  <div class="nav-center">
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="operations.html">For Business</a></li>
+      <li><a href="talent.html">Join as Talent</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <a href="pricing.html" class="nav-signin">Pricing</a>
+    <a href="contact.html" class="nav-cta">Get Started ›</a>
+  </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <canvas id="heroCanvas"></canvas>
-  <div class="hero-fade"></div>
-  <div class="hero-inner">
-    <div class="hero-kicker">Kampala, Uganda → World</div>
-    <h1 class="hero-h1">
-      DIGITAL<br>
-      MARKETING.
-      <em>at the price<br>you deserve.</em>
+<!-- HERO — Chatix-style split -->
+<section class="hero">
+  <div class="hero-left rv-l">
+    <div class="hero-eyebrow">Kampala, Uganda → World</div>
+    <h1>
+      Digital<br>
+      <span class="y">marketing</span><br>
+      that <span class="r">works.</span>
     </h1>
-    <div class="hero-row">
-      <div class="hero-left">
-        <p class="hero-sub">Uganda's first export-grade digital marketing studio. World-class campaigns. Certified talent. A fraction of what EU agencies charge.</p>
-        <div class="hero-btns">
-          <a href="pricing.html" class="btn btn-gold">View Pricing →</a>
-          <a href="services.html" class="btn btn-outline-w">Our Services</a>
+    <p class="hero-sub">
+      Pearl Digital connects global businesses with Uganda's best-trained digital marketers —
+      delivering <strong>EU-quality campaigns</strong> at a fraction of the cost.
+    </p>
+    <div class="hero-btns">
+      <a href="services.html" class="btn btn-yellow">Explore Services →</a>
+      <a href="contact.html" class="btn btn-outline">Talk to Us</a>
+    </div>
+    <div class="hero-proof">
+      <div class="hp-item"><span class="hp-dot y"></span>3–4× lower cost than EU agencies</div>
+      <div class="hp-item"><span class="hp-dot r"></span>250 certified Ugandan specialists</div>
+      <div class="hp-item"><span class="hp-dot w"></span>24hr response guaranteed</div>
+    </div>
+  </div>
+
+  <!-- FLOATING DASHBOARD — Chatix-style right panel -->
+  <div class="hero-right rv-r" style="transition-delay:.15s">
+    <div class="hero-visual">
+      <!-- Floating badge top right -->
+      <div class="hv-badge top-right">
+        <div class="hb-num y">+127%</div>
+        <div class="hb-label">Organic traffic lift</div>
+      </div>
+      <!-- Main dashboard -->
+      <div class="hv-main">
+        <div class="hv-topbar">
+          <div class="hv-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+          <span class="hv-title">Pearl Digital — Campaign Dashboard</span>
+        </div>
+        <div class="hv-body">
+          <div class="hv-metrics">
+            <div class="hv-metric"><div class="hv-m-num y">4.2×</div><div class="hv-m-label">ROAS</div><div class="hv-m-change up">↑ 18% this month</div></div>
+            <div class="hv-metric"><div class="hv-m-num w">8,400</div><div class="hv-m-label">Organic visits</div><div class="hv-m-change up">↑ 32% vs last</div></div>
+            <div class="hv-metric"><div class="hv-m-num r">-38%</div><div class="hv-m-label">Cost per lead</div><div class="hv-m-change up">↑ Better</div></div>
+          </div>
+          <div class="hv-chart">
+            <div class="hv-chart-label">Weekly Performance</div>
+            <div class="hv-bars">
+              <div class="hv-bar bar-grey" style="height:35%"></div>
+              <div class="hv-bar bar-grey" style="height:45%"></div>
+              <div class="hv-bar bar-y" style="height:55%"></div>
+              <div class="hv-bar bar-grey" style="height:40%"></div>
+              <div class="hv-bar bar-y" style="height:70%"></div>
+              <div class="hv-bar bar-grey" style="height:52%"></div>
+              <div class="hv-bar bar-y bar-active" style="height:88%"></div>
+            </div>
+          </div>
+          <div class="hv-campaigns">
+            <div class="hv-camp">
+              <div class="hv-camp-icon" style="background:rgba(245,196,0,.1)">🔍</div>
+              <span class="hv-camp-name">SEO Campaign — UK Client</span>
+              <span class="hv-camp-status cs-live">Live</span>
+              <span class="hv-camp-num">+63 kw</span>
+            </div>
+            <div class="hv-camp">
+              <div class="hv-camp-icon" style="background:rgba(204,0,0,.1)">💰</div>
+              <span class="hv-camp-name">Google Ads — DE E-commerce</span>
+              <span class="hv-camp-status cs-review">Review</span>
+              <span class="hv-camp-num">€2,400</span>
+            </div>
+            <div class="hv-camp">
+              <div class="hv-camp-icon" style="background:rgba(255,255,255,.06)">📱</div>
+              <span class="hv-camp-name">Social Media — UAE Brand</span>
+              <span class="hv-camp-status cs-live">Live</span>
+              <span class="hv-camp-num">4 plat.</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="hero-right">
-        <div class="hero-stats-vertical">
-          <div class="hsv-item">
-            <div class="hero-line"></div>
-            <div class="hsv-num gold">3–4×</div>
-            <div class="hsv-label">Lower cost than EU agencies</div>
-          </div>
-          <div class="hsv-item">
-            <div class="hero-line" style="background:var(--blue)"></div>
-            <div class="hsv-num blue">250</div>
-            <div class="hsv-label">Ugandans trained & certified</div>
-          </div>
-          <div class="hsv-item">
-            <div class="hero-line"></div>
-            <div class="hsv-num gold">24hr</div>
-            <div class="hsv-label">Average campaign response</div>
-          </div>
-        </div>
+      <!-- Floating badge bottom left -->
+      <div class="hv-badge bot-left">
+        <div class="hb-num r">99</div>
+        <div class="hb-label">Starting from / month</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span class="marquee-item">SEO</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">GOOGLE ADS</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">META ADS</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">CONTENT MARKETING</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">SOCIAL MEDIA</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">ANALYTICS</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">EMAIL MARKETING</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">LINKEDIN ADS</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">CAMPAIGN MANAGEMENT</span><span class="marquee-item marquee-dot">·</span>
-    <!-- duplicate for seamless loop -->
-    <span class="marquee-item">SEO</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">GOOGLE ADS</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">META ADS</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">CONTENT MARKETING</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">SOCIAL MEDIA</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">ANALYTICS</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">EMAIL MARKETING</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">LINKEDIN ADS</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">CAMPAIGN MANAGEMENT</span><span class="marquee-item marquee-dot">·</span>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">SEO</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">GOOGLE ADS</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">META ADS</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">CONTENT MARKETING</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">SOCIAL MEDIA</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">ANALYTICS & REPORTING</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">EMAIL MARKETING</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">LINKEDIN ADS</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">SEO</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">GOOGLE ADS</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">META ADS</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">CONTENT MARKETING</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">SOCIAL MEDIA</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">ANALYTICS & REPORTING</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">EMAIL MARKETING</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">LINKEDIN ADS</span><span class="ticker-item ticker-sep">·</span>
   </div>
 </div>
 
-<!-- STATEMENT -->
-<section class="statement-sec">
-  <div class="stmt-grid">
-    <div class="reveal-left">
-      <h2 class="stmt-big">
-        Uganda's<br>
-        <span class="gold-word">first</span><br>
-        export-grade<br>
-        <span class="blue-word">digital</span><br>
-        studio.
-      </h2>
+<!-- INTRO SPLIT -->
+<section class="intro-split rv">
+  <div class="intro-left">
+    <div class="flag-strip"><span class="fs-b"></span><span class="fs-y"></span><span class="fs-r"></span><span class="fs-b"></span></div>
+    <h2>Uganda's <span class="y">first</span> export-grade <span class="r">digital</span> studio.</h2>
+  </div>
+  <div class="intro-right">
+    <p>Pearl Digital trains Uganda's most talented marketers to deliver world-class campaigns for businesses in the UK, EU, UAE, and US — at a cost no European agency can match.</p>
+    <p>We don't just outsource. We build certified specialists, put them to work on your account, and deliver measurable results every month.</p>
+    <a href="services.html" class="btn btn-yellow">See Our Services →</a>
+  </div>
+</section>
+
+<!-- SERVICES BENTO -->
+<section class="services-home">
+  <div class="inner">
+    <div class="sh-head rv">
+      <div>
+        <div class="label label-yellow">What We Deliver</div>
+        <h2 class="display-sm" style="font-family:'Syne',sans-serif;color:#fff">Five services. One studio.</h2>
+      </div>
+      <a href="services.html">View all services →</a>
     </div>
-    <div class="reveal-right">
-      <p>Pearl Digital trains Uganda's most talented marketers to deliver campaigns for businesses in the UK, EU, UAE, and US — at a cost no London or Amsterdam agency can match.</p>
-      <p style="font-size:var(--fs-lg);font-weight:300;color:rgba(255,255,255,.45);line-height:1.85;margin-top:1rem">We don't just outsource. We build specialists, certify them, and put them to work on your business. Same Google methodology. Real results. African price.</p>
-      <a href="services.html" class="btn btn-outline-w" style="margin-top:2rem">Explore Services →</a>
-      <div class="stmt-numbers">
-        <div class="sn-item">
-          <div class="sn-num">$300B</div>
-          <div class="sn-label">Global market we're entering</div>
+    <div class="svc-bento rv">
+      <div class="sb tall">
+        <div class="sb-bg">01</div>
+        <span class="sb-icon">🔍</span>
+        <h3>Search Engine Optimisation</h3>
+        <p>Full technical, on-page and off-page SEO built to rank you globally. Monthly audits, content strategy, backlink building and ranking reports included.</p>
+        <a href="services.html#seo" class="sb-link">Learn more →</a>
+      </div>
+      <div class="sb yellow-cell">
+        <div class="sb-bg">02</div>
+        <span class="sb-icon">💰</span>
+        <h3>Paid Advertising</h3>
+        <p>Google, Meta and LinkedIn campaigns managed end-to-end with weekly ROAS reporting.</p>
+        <a href="services.html#ppc" class="sb-link">Learn more →</a>
+      </div>
+      <div class="sb">
+        <div class="sb-bg">03</div>
+        <span class="sb-icon">✍️</span>
+        <h3>Content Marketing</h3>
+        <p>SEO-optimised blogs, landing pages and email sequences in fluent English.</p>
+        <a href="services.html#content" class="sb-link">Learn more →</a>
+      </div>
+      <div class="sb">
+        <div class="sb-bg">04</div>
+        <span class="sb-icon">📱</span>
+        <h3>Social Media</h3>
+        <p>Daily posting, community management across 4 platforms.</p>
+        <a href="services.html#social" class="sb-link">Learn more →</a>
+      </div>
+      <div class="sb red-cell">
+        <div class="sb-bg">05</div>
+        <span class="sb-icon">📊</span>
+        <h3>Analytics & Reporting</h3>
+        <p>GA4 setup, conversion tracking and live monthly dashboards.</p>
+        <a href="services.html#analytics" class="sb-link">Learn more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION — YELLOW FULL BLEED -->
+<section class="mission">
+  <div class="mission-inner rv">
+    <div class="mission-left">
+      <div class="label label-grey" style="color:rgba(0,0,0,.45)"><span style="background:rgba(0,0,0,.3)"></span>Our Mission</div>
+      <h2>Positioning Uganda as the world's <em>digital marketing</em> destination.</h2>
+      <p>Pearl Digital is more than a service — it's Uganda's five-year national programme to build a world-class digital talent pipeline and export it globally.</p>
+    </div>
+    <div class="mission-right">
+      <div class="mission-stats rv" style="transition-delay:.15s">
+        <div class="ms big">
+          <div class="ms-num">00B</div>
+          <div class="ms-label">Global digital marketing market we are entering</div>
         </div>
-        <div class="sn-item">
-          <div class="sn-num">$92K</div>
-          <div class="sn-label">UIA-backed investment</div>
+        <div class="ms">
+          <div class="ms-num">250</div>
+          <div class="ms-label">Ugandans trained & certified</div>
         </div>
-        <div class="sn-item">
-          <div class="sn-num">5yr</div>
-          <div class="sn-label">Vision horizon</div>
+        <div class="ms">
+          <div class="ms-num">3–4×</div>
+          <div class="ms-label">Lower cost than EU agencies</div>
+        </div>
+        <div class="ms">
+          <div class="ms-num">2K</div>
+          <div class="ms-label">UIA-backed investment</div>
+        </div>
+        <div class="ms">
+          <div class="ms-num">5yr</div>
+          <div class="ms-label">Vision horizon</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES PREVIEW -->
-<section class="services-preview">
-  <div class="sp-header reveal">
-    <div>
-      <span class="lbl green">What We Deliver</span>
-      <h2 class="sec-head">Five services.<br>One studio.</h2>
+<!-- HOW IT WORKS -->
+<section class="hiw">
+  <div class="hiw-inner">
+    <div class="hiw-top rv">
+      <div>
+        <div class="label label-yellow">How It Works</div>
+        <h2 class="display-sm" style="font-family:'Syne',sans-serif;color:#fff;letter-spacing:-2px">From sign-up<br>to results.</h2>
+      </div>
+      <div>
+        <p class="sub-text" style="max-width:380px">Three steps from account creation to your first campaign going live — no complex setup, no waiting.</p>
+        <a href="contact.html" class="btn btn-yellow" style="margin-top:1.5rem">Start Today →</a>
+      </div>
     </div>
-    <a href="services.html">View all services →</a>
-  </div>
-  <div class="services-wall reveal">
-    <div class="sw-panel large">
-      <span class="sw-icon">🔍</span>
-      <div class="sw-bg-num">01</div>
-      <h3>Search Engine Optimisation</h3>
-      <p>Full-spectrum SEO — on-page, off-page, technical. Monthly audits, content strategy, backlink building and complete ranking reports. Built to get you ranking globally.</p>
-      <a href="services.html#seo" class="sw-link">Learn more →</a>
-    </div>
-    <div class="sw-panel dark">
-      <span class="sw-icon">💰</span>
-      <div class="sw-bg-num">02</div>
-      <h3>Paid Ads</h3>
-      <p>Google, Meta and LinkedIn campaigns built and managed end-to-end.</p>
-      <a href="services.html#ppc" class="sw-link">Learn more →</a>
-    </div>
-    <div class="sw-panel blue-panel">
-      <span class="sw-icon">✍️</span>
-      <div class="sw-bg-num">03</div>
-      <h3>Content</h3>
-      <p>SEO-optimised blog posts, landing pages and email sequences.</p>
-      <a href="services.html#content" class="sw-link">Learn more →</a>
-    </div>
-    <div class="sw-panel mid">
-      <span class="sw-icon">📱</span>
-      <div class="sw-bg-num">04</div>
-      <h3>Social Media</h3>
-      <p>Daily posting, community management, 4 platforms.</p>
-      <a href="services.html#social" class="sw-link">Learn more →</a>
-    </div>
-    <div class="sw-panel gold-panel">
-      <span class="sw-icon">📊</span>
-      <div class="sw-bg-num">05</div>
-      <h3>Analytics</h3>
-      <p>GA4 setup, conversion tracking and monthly dashboards.</p>
-      <a href="services.html#analytics" class="sw-link">Learn more →</a>
+    <div class="hiw-steps rv">
+      <div class="hiw-step">
+        <span class="step-n">01</span>
+        <span class="hiw-step-icon">📋</span>
+        <h4>Choose a Plan & Brief Us</h4>
+        <p>Select your service plan on our pricing page. Submit your campaign goals, audience and budget. We review within 24 hours.</p>
+        <span class="step-cta">Step 1 →</span>
+      </div>
+      <div class="hiw-step">
+        <span class="step-n">02</span>
+        <span class="hiw-step-icon">🎯</span>
+        <h4>We Build & Launch</h4>
+        <p>Your dedicated Pearl Digital team builds campaigns across SEO, ads, content or social. You approve every deliverable.</p>
+        <span class="step-cta">Step 2 →</span>
+      </div>
+      <div class="hiw-step">
+        <span class="step-n">03</span>
+        <span class="hiw-step-icon">📊</span>
+        <h4>Track & Scale</h4>
+        <p>Monitor all campaigns, spend and results in real time from your client dashboard. Request changes and scale anytime.</p>
+        <span class="step-cta">Step 3 →</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- NUMBERS -->
-<section class="numbers-sec">
-  <div style="text-align:center;margin-bottom:4rem" class="reveal">
-    <span class="lbl blue" style="justify-content:center;display:flex">By the numbers</span>
-    <h2 class="sec-head">Results speak<br>louder than claims.</h2>
-  </div>
-  <div class="num-grid reveal">
-    <div class="num-cell">
-      <div class="big-num gold" data-count="250">250</div>
-      <div class="num-label">Ugandan marketers<br>trained & certified</div>
-    </div>
-    <div class="num-cell">
-      <div class="big-num blue">3–4×</div>
-      <div class="num-label">Lower cost than<br>European agencies</div>
-    </div>
-    <div class="num-cell">
-      <div class="big-num green">$300B</div>
-      <div class="num-label">Global digital marketing<br>market we're entering</div>
-    </div>
-    <div class="num-cell">
-      <div class="big-num gold">24hr</div>
-      <div class="num-label">Average response time<br>from brief to kickoff</div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process-sec">
-  <div class="process-top">
-    <div class="reveal-left">
-      <span class="lbl light">How It Works</span>
-      <h2 class="sec-head white">From sign-up<br>to results.</h2>
-    </div>
-    <div class="reveal-right">
-      <p class="sec-lead light">Three steps from account creation to your first campaign going live.</p>
-      <a href="contact.html" class="btn btn-gold" style="margin-top:1.5rem">Get Started →</a>
-    </div>
-  </div>
-  <div class="process-steps reveal">
-    <div class="ps" data-n="01">
-      <span class="ps-icon">📋</span>
-      <h3>Subscribe & Brief Us</h3>
-      <p>Choose your plan on our pricing page. Submit your campaign goals, target audience, budget and key messages. Our team reviews within 24 hours.</p>
-      <span class="ps-arrow">Step 1 →</span>
-    </div>
-    <div class="ps" data-n="02">
-      <span class="ps-icon">🎯</span>
-      <h3>Build & Launch</h3>
-      <p>Your dedicated Pearl Digital specialist team builds your campaigns across SEO, paid ads, content, or social. You approve every deliverable before anything goes live.</p>
-      <span class="ps-arrow">Step 2 →</span>
-    </div>
-    <div class="ps" data-n="03">
-      <span class="ps-icon">📊</span>
-      <h3>Track & Scale</h3>
-      <p>Monitor all campaigns, spend and results in real time from your client dashboard. Request changes, communicate with your team, and scale anytime.</p>
-      <span class="ps-arrow">Step 3 →</span>
+<!-- WHO WE SERVE -->
+<section class="who">
+  <div class="who-inner rv">
+    <div class="label label-yellow">Who We Serve</div>
+    <h2 class="display-sm" style="font-family:'Syne',sans-serif;color:#fff;letter-spacing:-2px">Two ways<br>to work with us.</h2>
+    <div class="who-grid">
+      <div class="who-card yellow-card rv">
+        <span class="wc-icon">🌍</span>
+        <div class="wc-bg-num">01</div>
+        <h3>International Businesses</h3>
+        <p>Companies in the UK, EU, UAE, and US looking for affordable, high-quality digital marketing. Subscribe to a plan and get a dedicated specialist team working on your growth.</p>
+        <a href="services.html" class="btn btn-outline-dark">See Services →</a>
+      </div>
+      <div class="who-card rv" style="transition-delay:.1s">
+        <span class="wc-icon">🏢</span>
+        <div class="wc-bg-num">02</div>
+        <h3>Businesses & Organisations in Uganda</h3>
+        <p>Train your team or organisation in digital marketing skills through our structured corporate programme. Get certified specialists working inside your business.</p>
+        <a href="operations.html" class="btn btn-yellow">Corporate Training →</a>
+      </div>
+      <div class="who-card rv" style="transition-delay:.15s">
+        <span class="wc-icon">🇺🇬</span>
+        <div class="wc-bg-num">03</div>
+        <h3>Ugandan Talent (18–35)</h3>
+        <p>Get trained, certified and connected to international clients. Build a global digital career from right here in Uganda — no degree required.</p>
+        <a href="talent.html" class="btn btn-yellow">Join the Programme →</a>
+      </div>
+      <div class="who-card red-card rv" style="transition-delay:.2s">
+        <span class="wc-icon">🤝</span>
+        <div class="wc-bg-num">04</div>
+        <h3>Agencies Looking for a White-Label Partner</h3>
+        <p>EU and US agencies that need a reliable, high-quality delivery partner to fulfil client campaigns at scale — without the overhead.</p>
+        <a href="contact.html" class="btn btn-outline">Let's Talk →</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="home-cta">
-  <div class="cta-inner reveal">
-    <div class="cta-text">
-      <span class="lbl gold">Ready to grow?</span>
-      <h2>Spend less.<br><span>Grow more.</span></h2>
-    </div>
-    <div class="cta-btns">
-      <a href="pricing.html" class="btn btn-gold" style="width:100%;justify-content:center">See Pricing Plans →</a>
-      <a href="contact.html" class="btn btn-outline-w" style="width:100%;justify-content:center">Talk to Us First</a>
+<!-- TRUST / MARKETS -->
+<section class="trust">
+  <div class="trust-inner rv">
+    <div class="trust-label">Client Markets We Serve</div>
+    <div class="trust-markets">
+      <div class="tm"><span class="tm-flag">🇬🇧</span>United Kingdom</div>
+      <div class="tm-divider"></div>
+      <div class="tm"><span class="tm-flag">🇩🇪</span>Germany</div>
+      <div class="tm-divider"></div>
+      <div class="tm"><span class="tm-flag">🇳🇱</span>Netherlands</div>
+      <div class="tm-divider"></div>
+      <div class="tm"><span class="tm-flag">🇦🇪</span>UAE</div>
+      <div class="tm-divider"></div>
+      <div class="tm"><span class="tm-flag">🇺🇸</span>United States</div>
+      <div class="tm-divider"></div>
+      <div class="tm"><span class="tm-flag">🇺🇬</span>Uganda</div>
     </div>
   </div>
 </section>
 
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="nav-wordmark">Pearl Digital<small>Uganda · Global</small></div>
-      <p>Uganda's first export-grade digital marketing studio. World-class results at African prices — trained talent, global delivery.</p>
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <div class="cta-strip-inner rv">
+    <div class="cs-text">
+      <h2>Ready to grow your<br><span>business online?</span></h2>
+      <p>Talk to our team today. We'll put together the right service plan for your goals and budget.</p>
     </div>
-    <div class="footer-col"><h4>Platform</h4><ul><li><a href="services.html">Our Services</a></li><li><a href="pricing.html">Pricing Plans</a></li><li><a href="talent.html">Join as Talent</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
-    <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html#seo">SEO</a></li><li><a href="services.html#ppc">Paid Advertising</a></li><li><a href="services.html#content">Content Marketing</a></li><li><a href="services.html#social">Social Media</a></li><li><a href="services.html#analytics">Analytics</a></li></ul></div>
-    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:contact@pearldigital.ug">contact@pearldigital.ug</a></li><li><a href="#">Kampala, Uganda</a></li><li><a href="#">Serving UK · EU · UAE · US</a></li></ul></div>
+    <div class="cs-btns">
+      <a href="contact.html" class="btn btn-yellow" style="white-space:nowrap">Get Started →</a>
+      <a href="services.html" class="btn btn-outline" style="white-space:nowrap">View Services</a>
+    </div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2025 Pearl Digital UG. All rights reserved.</p>
-    <p class="footer-powered">Platform powered by <a href="https://futuregensoft.com" target="_blank">Future Generations Software</a> · In partnership with Elmot Ltd &amp; UIA</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="secondarylogo.png" alt="Pearl Digital">
+        <p>Uganda's first export-grade digital marketing studio. World-class results at African prices.</p>
+      </div>
+      <div class="footer-col"><h5>Platform</h5><ul><li><a href="services.html">Services</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="operations.html">For Business</a></li><li><a href="talent.html">Join as Talent</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h5>Services</h5><ul><li><a href="services.html#seo">SEO</a></li><li><a href="services.html#ppc">Paid Advertising</a></li><li><a href="services.html#content">Content Marketing</a></li><li><a href="services.html#social">Social Media</a></li><li><a href="services.html#analytics">Analytics</a></li></ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul><li><a href="mailto:contact@pearldigital.ug">contact@pearldigital.ug</a></li><li><a href="#">Kampala, Uganda</a></li><li><a href="#">UK · EU · UAE · US</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Pearl Digital UG. All rights reserved.</p>
+      <p>Powered by <a href="https://futuregensoft.com" target="_blank">Future Generations Software</a> · Elmot Ltd &amp; Uganda Investment Authority</p>
+    </div>
   </div>
 </footer>
 
 <script>
-const nav=document.getElementById('siteNav');
-window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>50));
-/* HERO CANVAS */
-(()=>{
-  const c=document.getElementById('heroCanvas'),ctx=c.getContext('2d');
-  let W,H,pts=[],t=0;
-  const COLS=[{r:21,g:138,b:82},{r:201,g:164,b:76},{r:110,g:205,b:232},{r:61,g:184,b,g:216,b:216},{r:14,g:92,b:56}];
-  const C2=[{r:21,g:138,b:82},{r:201,g:164,b:76},{r:110,g:205,b:232},{r:61,g:184,b:216},{r:14,g:92,b:56}];
-  function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight}
-  function mkP(){const col=C2[Math.floor(Math.random()*C2.length)];return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*2.5+.5,a:Math.random()*.55+.1,c:col,ph:Math.random()*Math.PI*2,ps:.01+Math.random()*.025}}
-  function init(){resize();pts=Array.from({length:240},mkP)}
-  function aurora(){
-    const bl=[
-      {x:W*.18,y:H*.4,r:W*.42,c:{r:21,g:138,b:82},a:.07},
-      {x:W*.78,y:H*.5,r:W*.38,c:{r:110,g:205,b:232},a:.055},
-      {x:W*.5,y:H*.08,r:W*.3,c:{r:201,g:164,b:76},a:.04},
-      {x:W*.88,y:H*.85,r:W*.25,c:{r:61,g:184,b:216},a:.04}
-    ];
-    bl.forEach((b,i)=>{
-      const ox=Math.sin(t*.22+i*1.3)*W*.035,oy=Math.cos(t*.16+i*.85)*H*.04;
-      const g=ctx.createRadialGradient(b.x+ox,b.y+oy,0,b.x+ox,b.y+oy,b.r);
-      g.addColorStop(0,`rgba(${b.c.r},${b.c.g},${b.c.b},${b.a})`);
-      g.addColorStop(1,`rgba(${b.c.r},${b.c.g},${b.c.b},0)`);
-      ctx.fillStyle=g;ctx.beginPath();ctx.arc(b.x+ox,b.y+oy,b.r,0,Math.PI*2);ctx.fill();
-    });
-  }
-  function lines(){
-    for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
-      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<100){const al=(1-d/100)*.09;ctx.strokeStyle=`rgba(${pts[i].c.r},${pts[i].c.g},${pts[i].c.b},${al})`;ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke()}
-    }
-  }
-  function frame(){
-    t+=.007;ctx.clearRect(0,0,W,H);
-    ctx.fillStyle='#040b06';ctx.fillRect(0,0,W,H);
-    aurora();lines();
-    pts.forEach(p=>{
-      p.x+=p.vx;p.y+=p.vy;p.ph+=p.ps;
-      if(p.x<-5)p.x=W+5;if(p.x>W+5)p.x=-5;
-      if(p.y<-5)p.y=H+5;if(p.y>H+5)p.y=-5;
-      const pl=Math.sin(p.ph)*.3+.7;
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(${p.c.r},${p.c.g},${p.c.b},${p.a*pl})`;ctx.fill();
-    });
-    requestAnimationFrame(frame);
-  }
-  init();frame();
-  window.addEventListener('resize',resize);
-})();
-/* REVEAL */
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('stuck',scrollY>40));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>io.observe(el));
+document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
