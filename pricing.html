@@ -46,27 +46,22 @@ body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--tx-dark
   position:fixed;top:0;left:0;right:0;z-index:500;
   height:68px;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 5%;
+  padding:0 4%;
   transition:background .3s,border-color .3s;
-}
-.site-nav.solid,.site-nav.always-solid{
   background:rgba(4,11,6,.94);
   backdrop-filter:blur(18px);
   border-bottom:1px solid rgba(255,255,255,.05);
 }
-.nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none}
-.nav-gem{
-  width:34px;height:34px;border-radius:50%;
-  background:var(--forest-2);border:1px solid rgba(201,164,76,.35);
-  display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;
-}
-.nav-wordmark{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#fff;letter-spacing:-.4px;line-height:1}
-.nav-wordmark small{display:block;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.35);font-weight:500;text-transform:uppercase;margin-top:2px}
+.nav-logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
+.nav-center{flex:1;display:flex;justify-content:center}
 .nav-links{display:flex;align-items:center;gap:2.25rem;list-style:none}
 .nav-links a{font-size:13.5px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;position:relative;transition:color .2s;letter-spacing:.1px}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .2s;border-radius:1px}
-.nav-links a:hover,a.nav-active{color:#fff}
-.nav-links a:hover::after,a.nav-active::after{width:100%}
+.nav-links a:hover,.nav-links a.nav-active{color:#fff}
+.nav-links a:hover::after,.nav-links a.nav-active::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.nav-price{font-size:13.5px;font-weight:500;color:rgba(255,255,255,.55);text-decoration:none;padding:.45rem .9rem;border-radius:6px;transition:all .2s}
+.nav-price:hover{color:#fff;background:rgba(255,255,255,.06)}
 .nav-cta{
   background:var(--gold);color:var(--forest) !important;
   padding:.5rem 1.35rem;border-radius:6px;font-weight:700 !important;
@@ -74,11 +69,9 @@ body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--tx-dark
 }
 .nav-cta:hover{background:var(--gold-2) !important}
 .nav-cta::after{display:none !important}
-.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.nav-ham span{display:block;width:24px;height:1.5px;background:#fff;transition:all .3s}
 @media(max-width:900px){
-  .nav-links{display:none}
-  .nav-ham{display:flex}
+  .nav-center{display:none}
+  .nav-price{display:none}
 }
 
 /* ─── FOOTER ─── */
@@ -238,14 +231,23 @@ h2.sec-head.white{color:#fff}
 </style>
 </head>
 <body>
-<nav class="site-nav always-solid">
-  <a href="index.html" class="nav-logo"><img src="mainlogo.png" alt="Pearl Digital" style="height:34px;width:auto"></a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li>
-    <li><a href="pricing.html" class="nav-active">Pricing</a></li>
-    <li><a href="operations.html">For Business</a></li><li><a href="talent.html">Join as Talent</a></li>
-    <li><a href="contact.html" class="nav-cta">Get Started</a></li>
-  </ul>
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="secondarylogo.png" alt="Pearl Digital" style="height:60px;width:auto">
+  </a>
+  <div class="nav-center">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="pricing.html" class="nav-active">Pricing</a></li>
+      <li><a href="operations.html">For Business</a></li>
+      <li><a href="talent.html">Join as Talent</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <a href="contact.html" class="nav-cta">Get Started ›</a>
+  </div>
 </nav>
 <div class="page-header">
   <span class="ph-label gold">Transparent Pricing</span>
