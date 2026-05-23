@@ -48,36 +48,67 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
 .lbl{display:block;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.75rem}
 .lbl-gold{color:var(--gold)}.lbl-blue{color:var(--blue-3)}.lbl-green{color:var(--forest-4)}.lbl-light{color:rgba(255,255,255,.35)}
 
-/* PAGE HEADER */
+/* VIDEO HERO */
 .ph{
-  padding:8.5rem 4% 5.5rem;
-  background:var(--ink);
-  position:relative;overflow:hidden;
+  position:relative;
+  width:100%;height:100vh;min-height:680px;
+  overflow:hidden;
+  display:flex;align-items:center;
 }
-.ph-bg{
-  position:absolute;right:-2vw;bottom:-4vw;
-  font-family:'Syne',sans-serif;font-size:28vw;font-weight:900;
-  color:rgba(255,255,255,.02);line-height:.9;letter-spacing:-10px;
-  pointer-events:none;white-space:nowrap;
+/* Video layer */
+.ph-video-wrap{
+  position:absolute;inset:0;width:100%;height:100%;
 }
-.ph-glow{
-  position:absolute;top:-100px;right:10%;
-  width:500px;height:500px;border-radius:50%;
-  background:radial-gradient(circle,rgba(110,205,232,.06) 0%,transparent 70%);
+.ph-video-wrap video{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center center;
 }
-.ph-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2}
+/* Green + yellow blurry overlay at 10% */
+.ph-color-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,
+    rgba(7,27,16,.10) 0%,
+    rgba(201,164,76,.10) 50%,
+    rgba(7,27,16,.10) 100%);
+  backdrop-filter:blur(0px);
+  -webkit-backdrop-filter:blur(0px);
+  z-index:1;
+}
+/* Extra dark gradient so text is readable */
+.ph-dark-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(4,11,6,.55) 0%,
+    rgba(4,11,6,.3) 40%,
+    rgba(4,11,6,.3) 60%,
+    rgba(4,11,6,.75) 100%);
+  z-index:2;
+}
+.ph-inner{
+  position:relative;z-index:3;
+  max-width:1200px;margin:0 auto;padding:0 4%;width:100%;
+}
 .ph h1{
   font-family:'Syne',sans-serif;
   font-size:clamp(3.2rem,7vw,7.5rem);
   font-weight:900;line-height:.92;letter-spacing:-5px;color:#fff;margin-bottom:1.5rem;
 }
 .ph h1 .gold{color:var(--gold)}.ph h1 .blue{color:var(--blue)}
-.ph-sub{font-size:1.15rem;font-weight:300;color:rgba(255,255,255,.45);max-width:560px;line-height:1.85}
+.ph-sub{font-size:1.15rem;font-weight:300;color:rgba(255,255,255,.6);max-width:560px;line-height:1.85}
 .ph-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem}
-.ph-stats{display:flex;gap:3rem;margin-top:3.5rem;flex-wrap:wrap;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.07)}
-.phs{border-left:2px solid rgba(201,164,76,.3);padding-left:1rem}
+.ph-stats{display:flex;gap:3rem;margin-top:3.5rem;flex-wrap:wrap;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.15)}
+.phs{border-left:2px solid rgba(201,164,76,.4);padding-left:1rem}
 .phs-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:900;color:var(--gold);line-height:1}
-.phs-label{font-size:11px;color:rgba(255,255,255,.35);margin-top:3px;letter-spacing:.5px}
+.phs-label{font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;letter-spacing:.5px}
+/* Scroll hint */
+.ph-scroll{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  z-index:3;display:flex;flex-direction:column;align-items:center;gap:.5rem;
+}
+.ph-scroll span{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.35);font-weight:500}
+.ph-scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);animation:sp 2.2s ease-in-out infinite}
+@keyframes sp{0%,100%{opacity:.35}50%{opacity:.9}}
 
 /* WHAT YOU GET */
 .wg{padding:6rem 4%;background:var(--ink-2)}
@@ -91,7 +122,24 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
 .wgc.gold-bg{background:#0f0d00;border-color:rgba(201,164,76,.1)}
 .wgc.blue-bg{background:#071828;border-color:rgba(110,205,232,.1)}
 .wgc-bg{position:absolute;bottom:-1rem;right:.5rem;font-family:'Syne',sans-serif;font-size:6.5rem;font-weight:900;color:rgba(255,255,255,.025);line-height:1;pointer-events:none}
-.wgc-icon{font-size:2.25rem;margin-bottom:1.25rem;display:block}
+/* Remove visible icon */
+.wgc-icon{display:none}
+/* Emoji background on cards — hidden until hover */
+.wgc-emoji-bg{
+  position:absolute;bottom:-8%;right:-4%;
+  font-size:8.5rem;line-height:1;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .35s ease,transform .35s ease;
+  transform:scale(.82) rotate(-6deg);
+  z-index:1;
+  filter:grayscale(1) brightness(.18) sepia(.3);
+  width:60%;height:60%;
+  display:flex;align-items:flex-end;justify-content:flex-end;
+}
+.wgc:hover .wgc-emoji-bg{opacity:1;transform:scale(1) rotate(-3deg)}
+.wgc.gold-bg .wgc-emoji-bg{filter:grayscale(1) brightness(.3) sepia(.4)}
+.wgc.blue-bg .wgc-emoji-bg{filter:grayscale(1) brightness(.22) sepia(.3)}
 .wgc h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.65rem;letter-spacing:-.2px;position:relative;z-index:2}
 .wgc p{font-size:13.5px;color:rgba(255,255,255,.42);line-height:1.75;font-weight:300;position:relative;z-index:2}
 .wgc-tag{display:inline-block;margin-top:1rem;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.28rem .65rem;border-radius:4px;position:relative;z-index:2}
@@ -100,8 +148,19 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
 .wt-w{background:rgba(255,255,255,.05);border:1px solid var(--bd);color:rgba(255,255,255,.45)}
 
 /* PROGRAMME TIERS */
-.tiers{padding:6rem 4%;background:var(--forest)}
-.tiers-inner{max-width:1200px;margin:0 auto}
+.tiers{
+  padding:6rem 4%;
+  position:relative;overflow:hidden;
+  background:var(--forest);
+}
+/* verticalimage.jpg as background */
+.tiers::before{
+  content:'';position:absolute;inset:0;
+  background:url('verticalimage.jpg') center center / cover no-repeat;
+  opacity:.18;
+  z-index:0;
+}
+.tiers-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
 .tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem}
 .tc{
   border-radius:20px;padding:2.25rem;border:1px solid rgba(255,255,255,.07);
@@ -142,8 +201,19 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
 .tb-blue{background:var(--blue-2);color:#fff}.tb-blue:hover{background:var(--blue-3);transform:translateY(-1px)}
 
 /* CURRICULUM */
-.curr{padding:6rem 4%;background:var(--ink-2)}
-.curr-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.curr{
+  padding:6rem 4%;
+  position:relative;overflow:hidden;
+  background:var(--ink-2);
+}
+/* verticalimage.jpg as background */
+.curr::before{
+  content:'';position:absolute;inset:0;
+  background:url('verticalimage.jpg') center center / cover no-repeat;
+  opacity:.12;
+  z-index:0;
+}
+.curr-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;position:relative;z-index:1}
 .curr-left h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:900;letter-spacing:-2px;line-height:1;color:#fff;margin-bottom:1rem}
 .curr-left p{font-size:15px;font-weight:300;color:rgba(255,255,255,.42);line-height:1.85;margin-bottom:1.5rem}
 .cert-chips{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:.5rem}
@@ -156,7 +226,19 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
 }
 .mod:hover{border-color:rgba(201,164,76,.18);background:#0e2a1c}
 .mod-n{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:800;color:var(--gold);width:26px;flex-shrink:0;letter-spacing:-.5px}
-.mod-ico{font-size:1.2rem;flex-shrink:0}
+/* Hide emoji icon on modules */
+.mod-ico{display:none}
+/* Emoji background on module items — hover only */
+.mod-emoji-bg{
+  position:absolute;right:-.5rem;top:50%;transform:translateY(-50%) scale(.75) rotate(-5deg);
+  font-size:3.5rem;line-height:1;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .3s ease,transform .3s ease;
+  filter:grayscale(1) brightness(.22) sepia(.3);
+}
+.mod{position:relative;overflow:hidden}
+.mod:hover .mod-emoji-bg{opacity:1;transform:translateY(-50%) scale(1) rotate(-2deg)}
 .mod-info{flex:1}
 .mod-title{font-size:13.5px;font-weight:600;color:#fff;margin-bottom:.2rem}
 .mod-weeks{font-size:11.5px;color:rgba(255,255,255,.35);font-weight:300}
@@ -180,7 +262,19 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
 
 /* ENROLMENT CTA */
 .enrol{padding:7rem 4%;background:var(--gold);position:relative;overflow:hidden}
+/* Keep original circle */
 .enrol::before{content:'';position:absolute;bottom:-5rem;right:-5rem;width:500px;height:500px;border-radius:50%;background:rgba(0,0,0,.06)}
+/* Kob image — sits on the circle, fades right */
+.enrol-kob{
+  position:absolute;
+  bottom:-2rem;right:-3rem;
+  width:500px;height:500px;
+  object-fit:contain;object-position:left center;
+  -webkit-mask-image:linear-gradient(to right,rgba(0,0,0,.9) 0%,rgba(0,0,0,.65) 35%,rgba(0,0,0,.2) 65%,transparent 88%);
+  mask-image:linear-gradient(to right,rgba(0,0,0,.9) 0%,rgba(0,0,0,.65) 35%,rgba(0,0,0,.2) 65%,transparent 88%);
+  pointer-events:none;
+  z-index:1;
+}
 .enrol-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;position:relative;z-index:2}
 .enrol-text h2{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;letter-spacing:-2px;color:#000;margin-bottom:.75rem;line-height:1}
 .enrol-text p{font-size:1.05rem;font-weight:300;color:rgba(0,0,0,.6);line-height:1.8;max-width:540px}
@@ -237,12 +331,21 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
   </div>
 </nav>
 
-<!-- PAGE HEADER -->
+<!-- VIDEO HERO -->
 <div class="ph">
-  <div class="ph-glow"></div>
-  <div class="ph-bg">BIZ</div>
+  <!-- Video -->
+  <div class="ph-video-wrap">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="ops-hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <!-- Green + yellow blurry overlay 10% -->
+  <div class="ph-color-overlay"></div>
+  <!-- Dark legibility overlay -->
+  <div class="ph-dark-overlay"></div>
+  <!-- Content -->
   <div class="ph-inner">
-    <span class="lbl lbl-gold">Corporate Training · Uganda & Global</span>
+    <span class="lbl lbl-gold">Corporate Training · Uganda &amp; Global</span>
     <h1>
       Train your<br>
       team in <span class="gold">digital</span><br>
@@ -260,6 +363,11 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
       <div class="phs"><div class="phs-num" style="color:var(--blue)">Live</div><div class="phs-label">Instructor-led sessions</div></div>
     </div>
   </div>
+  <!-- Scroll hint -->
+  <div class="ph-scroll">
+    <span>Scroll</span>
+    <div class="ph-scroll-line"></div>
+  </div>
 </div>
 
 <!-- WHAT YOU GET -->
@@ -269,37 +377,43 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
     <h2 style="font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:900;letter-spacing:-2px;color:#fff">Everything your team<br>needs to succeed.</h2>
     <div class="wg-grid">
       <div class="wgc gold-bg rv">
-        <div class="wgc-bg">01</div><span class="wgc-icon">📚</span>
+        <div class="wgc-bg">01</div>
+        <div class="wgc-emoji-bg">📚</div>
         <h3>Structured 8-Module Curriculum</h3>
         <p>SEO, Google Ads, Meta Ads, content marketing, social media, email, analytics and live campaign projects — a complete digital marketing education.</p>
         <span class="wgc-tag wt-g">8 Modules</span>
       </div>
       <div class="wgc rv" style="transition-delay:.07s">
-        <div class="wgc-bg">02</div><span class="wgc-icon">🏆</span>
+        <div class="wgc-bg">02</div>
+        <div class="wgc-emoji-bg">🏆</div>
         <h3>Google &amp; Meta Certifications</h3>
         <p>Every participant works toward official Google Ads, GA4 and Meta Blueprint certifications — internationally recognised credentials they keep forever.</p>
         <span class="wgc-tag wt-g">Google · Meta · GA4</span>
       </div>
       <div class="wgc blue-bg rv" style="transition-delay:.12s">
-        <div class="wgc-bg">03</div><span class="wgc-icon">👩‍💻</span>
+        <div class="wgc-bg">03</div>
+        <div class="wgc-emoji-bg">👩‍💻</div>
         <h3>Live Instructor-Led Sessions</h3>
-        <p>Weekly live sessions with Pearl Digital's specialist instructors. Real human teaching with Q&A, feedback and personalised guidance — not pre-recorded video.</p>
+        <p>Weekly live sessions with Pearl Digital's specialist instructors. Real human teaching with Q&amp;A, feedback and personalised guidance — not pre-recorded video.</p>
         <span class="wgc-tag wt-b">Live · Weekly</span>
       </div>
       <div class="wgc rv" style="transition-delay:.16s">
-        <div class="wgc-bg">04</div><span class="wgc-icon">📊</span>
+        <div class="wgc-bg">04</div>
+        <div class="wgc-emoji-bg">📊</div>
         <h3>Manager Progress Dashboard</h3>
         <p>Real-time dashboard for HR and managers to track each team member's progress, module completion, assessment scores and certifications earned.</p>
         <span class="wgc-tag wt-w">Real-time Tracking</span>
       </div>
       <div class="wgc rv" style="transition-delay:.2s">
-        <div class="wgc-bg">05</div><span class="wgc-icon">🎯</span>
+        <div class="wgc-bg">05</div>
+        <div class="wgc-emoji-bg">🎯</div>
         <h3>Live Campaign Projects</h3>
         <p>Participants apply learning on real campaign briefs — either for your own business or on Pearl Digital client accounts for hands-on international experience.</p>
         <span class="wgc-tag wt-g">Hands-On · Real Clients</span>
       </div>
       <div class="wgc rv" style="transition-delay:.24s">
-        <div class="wgc-bg">06</div><span class="wgc-icon">📜</span>
+        <div class="wgc-bg">06</div>
+        <div class="wgc-emoji-bg">📜</div>
         <h3>Pearl Digital Certification</h3>
         <p>All completers receive the official Pearl Digital Corporate Training certificate — endorsing expertise for HR records, LinkedIn profiles and CVs.</p>
         <span class="wgc-tag wt-w">Accredited · Official</span>
@@ -384,14 +498,14 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
       </div>
     </div>
     <div class="mod-list rv-r" style="transition-delay:.15s">
-      <div class="mod"><span class="mod-n">01</span><span class="mod-ico">🌐</span><div class="mod-info"><div class="mod-title">Digital Marketing Foundations</div><div class="mod-weeks">Week 1–2 · Theory + Practical</div></div></div>
-      <div class="mod"><span class="mod-n">02</span><span class="mod-ico">🔍</span><div class="mod-info"><div class="mod-title">Search Engine Optimisation</div><div class="mod-weeks">Week 3–4 · Keyword tools + audits</div></div><span class="mod-cert">Google</span></div>
-      <div class="mod"><span class="mod-n">03</span><span class="mod-ico">💰</span><div class="mod-info"><div class="mod-title">Google Ads & PPC</div><div class="mod-weeks">Week 5 · Campaign setup + bidding</div></div><span class="mod-cert">Certified</span></div>
-      <div class="mod"><span class="mod-n">04</span><span class="mod-ico">📘</span><div class="mod-info"><div class="mod-title">Meta Ads (Facebook & Instagram)</div><div class="mod-weeks">Week 6 · Targeting + creative</div></div><span class="mod-cert">Meta</span></div>
-      <div class="mod"><span class="mod-n">05</span><span class="mod-ico">✍️</span><div class="mod-info"><div class="mod-title">Content Marketing & Copywriting</div><div class="mod-weeks">Week 7 · SEO writing, email, landing pages</div></div></div>
-      <div class="mod"><span class="mod-n">06</span><span class="mod-ico">📱</span><div class="mod-info"><div class="mod-title">Social Media Management</div><div class="mod-weeks">Week 8 · Content calendar, community mgmt</div></div></div>
-      <div class="mod"><span class="mod-n">07</span><span class="mod-ico">📊</span><div class="mod-info"><div class="mod-title">Analytics, GA4 & Reporting</div><div class="mod-weeks">Week 9 · Dashboard setup, attribution</div></div><span class="mod-cert">GA4</span></div>
-      <div class="mod"><span class="mod-n">08</span><span class="mod-ico">🎯</span><div class="mod-info"><div class="mod-title">Live Campaign Project</div><div class="mod-weeks">Week 10–12 · Real client work</div></div></div>
+      <div class="mod"><span class="mod-n">01</span><div class="mod-emoji-bg">🌐</div><div class="mod-info"><div class="mod-title">Digital Marketing Foundations</div><div class="mod-weeks">Week 1–2 · Theory + Practical</div></div></div>
+      <div class="mod"><span class="mod-n">02</span><div class="mod-emoji-bg">🔍</div><div class="mod-info"><div class="mod-title">Search Engine Optimisation</div><div class="mod-weeks">Week 3–4 · Keyword tools + audits</div></div><span class="mod-cert">Google</span></div>
+      <div class="mod"><span class="mod-n">03</span><div class="mod-emoji-bg">💰</div><div class="mod-info"><div class="mod-title">Google Ads &amp; PPC</div><div class="mod-weeks">Week 5 · Campaign setup + bidding</div></div><span class="mod-cert">Certified</span></div>
+      <div class="mod"><span class="mod-n">04</span><div class="mod-emoji-bg">📘</div><div class="mod-info"><div class="mod-title">Meta Ads (Facebook &amp; Instagram)</div><div class="mod-weeks">Week 6 · Targeting + creative</div></div><span class="mod-cert">Meta</span></div>
+      <div class="mod"><span class="mod-n">05</span><div class="mod-emoji-bg">✍️</div><div class="mod-info"><div class="mod-title">Content Marketing &amp; Copywriting</div><div class="mod-weeks">Week 7 · SEO writing, email, landing pages</div></div></div>
+      <div class="mod"><span class="mod-n">06</span><div class="mod-emoji-bg">📱</div><div class="mod-info"><div class="mod-title">Social Media Management</div><div class="mod-weeks">Week 8 · Content calendar, community mgmt</div></div></div>
+      <div class="mod"><span class="mod-n">07</span><div class="mod-emoji-bg">📊</div><div class="mod-info"><div class="mod-title">Analytics, GA4 &amp; Reporting</div><div class="mod-weeks">Week 9 · Dashboard setup, attribution</div></div><span class="mod-cert">GA4</span></div>
+      <div class="mod"><span class="mod-n">08</span><div class="mod-emoji-bg">🎯</div><div class="mod-info"><div class="mod-title">Live Campaign Project</div><div class="mod-weeks">Week 10–12 · Real client work</div></div></div>
     </div>
   </div>
 </section>
@@ -425,6 +539,7 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
 
 <!-- ENROLMENT CTA -->
 <section class="enrol" id="enrol">
+  <img src="kob.png" alt="" class="enrol-kob" aria-hidden="true">
   <div class="enrol-inner rv">
     <div class="enrol-text">
       <h2>Ready to train your team?</h2>
