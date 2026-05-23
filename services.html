@@ -45,41 +45,33 @@ body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--tx-dark
 /* ─── NAV ─── */
 .site-nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
-  height:68px;
+  height:70px;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 5%;
-  transition:background .3s,border-color .3s;
+  padding:0 4%;
+  background:rgba(4,11,6,.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.07);
 }
-.site-nav.solid,.site-nav.always-solid{
-  background:rgba(4,11,6,.94);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.05);
-}
-.nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none}
-.nav-gem{
-  width:34px;height:34px;border-radius:50%;
-  background:var(--forest-2);border:1px solid rgba(201,164,76,.35);
-  display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;
-}
-.nav-wordmark{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#fff;letter-spacing:-.4px;line-height:1}
-.nav-wordmark small{display:block;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.35);font-weight:500;text-transform:uppercase;margin-top:2px}
-.nav-links{display:flex;align-items:center;gap:2.25rem;list-style:none}
-.nav-links a{font-size:13.5px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;position:relative;transition:color .2s;letter-spacing:.1px}
+.nav-logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;flex-shrink:0}
+.nav-center{flex:1;display:flex;justify-content:center}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;position:relative;transition:color .2s;letter-spacing:.1px}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .2s;border-radius:1px}
-.nav-links a:hover,a.nav-active{color:#fff}
-.nav-links a:hover::after,a.nav-active::after{width:100%}
+.nav-links a:hover,.nav-links a.nav-active{color:#fff}
+.nav-links a:hover::after,.nav-links a.nav-active::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.nav-price{font-size:13.5px;font-weight:500;color:rgba(255,255,255,.55);text-decoration:none;padding:.45rem .9rem;border-radius:6px;transition:all .2s}
+.nav-price:hover{color:#fff;background:rgba(255,255,255,.06)}
 .nav-cta{
   background:var(--gold);color:var(--forest) !important;
-  padding:.5rem 1.35rem;border-radius:6px;font-weight:700 !important;
-  font-size:13px !important;letter-spacing:.3px;transition:all .2s !important;
+  padding:.5rem 1.3rem;border-radius:6px;font-weight:700 !important;
+  font-size:13.5px !important;letter-spacing:.2px;transition:all .2s !important;
 }
-.nav-cta:hover{background:var(--gold-2) !important}
+.nav-cta:hover{background:var(--gold-2) !important;transform:translateY(-1px)}
 .nav-cta::after{display:none !important}
-.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.nav-ham span{display:block;width:24px;height:1.5px;background:#fff;transition:all .3s}
 @media(max-width:900px){
-  .nav-links{display:none}
-  .nav-ham{display:flex}
+  .nav-center{display:none}
+  .nav-price{display:none}
 }
 
 /* ─── FOOTER ─── */
@@ -203,21 +195,38 @@ h2.sec-head.white{color:#fff}
 }
 .svc-section:nth-child(odd) .svc-visual{background:var(--forest)}
 .svc-section:nth-child(even) .svc-visual{background:#0a1e26}
-.sv-icon-big{font-size:6rem;position:relative;z-index:2}
-.sv-circles{position:absolute;inset:0}
-.sv-circles span{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.04);top:50%;left:50%;transform:translate(-50%,-50%)}
+/* Real image fills the visual panel */
+.svc-visual img.svc-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  border-radius:24px;
+  transition:transform .5s ease;
+}
+.svc-visual:hover img.svc-img{transform:scale(1.03)}
+/* Dark overlay so stat badges remain readable */
+.svc-visual .svc-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(4,11,6,.55) 0%,rgba(4,11,6,.25) 50%,rgba(4,11,6,.55) 100%);
+  border-radius:24px;
+  z-index:1;
+}
+.sv-icon-big{display:none}
+.sv-circles{position:absolute;inset:0;z-index:2}
+.sv-circles span{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.06);top:50%;left:50%;transform:translate(-50%,-50%)}
 .sv-circles span:nth-child(1){width:120px;height:120px}
 .sv-circles span:nth-child(2){width:220px;height:220px}
 .sv-circles span:nth-child(3){width:340px;height:340px}
 .sv-circles span:nth-child(4){width:480px;height:480px}
 .sv-stat{
-  position:absolute;background:rgba(0,0,0,.4);backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.85rem 1.1rem;
+  position:absolute;background:rgba(0,0,0,.5);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.85rem 1.1rem;
+  z-index:3;
 }
 .sv-stat.tl{top:1.5rem;left:1.5rem}
 .sv-stat.br{bottom:1.5rem;right:1.5rem}
 .sv-stat-num{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:900;color:var(--gold);line-height:1}
-.sv-stat-label{font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.5px;margin-top:2px}
+.sv-stat-label{font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.5px;margin-top:2px}
 .svc-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
 .stag{font-size:11px;font-weight:600;padding:.3rem .8rem;border-radius:4px}
 .stag.gold{background:rgba(201,164,76,.1);border:1px solid rgba(201,164,76,.2);color:var(--gold)}
@@ -235,15 +244,23 @@ h2.sec-head.white{color:#fff}
 </style>
 </head>
 <body>
-<nav class="site-nav always-solid">
-  <a href="index.html" class="nav-logo"><img src="mainlogo.png" alt="Pearl Digital" style="height:34px;width:auto"></a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="services.html" class="nav-active">Services</a></li>
-    <li><a href="pricing.html">Pricing</a></li>
-    <li><a href="operations.html">For Business</a></li><li><a href="talent.html">Join as Talent</a></li>
-    <li><a href="contact.html" class="nav-cta">Get Started</a></li>
-  </ul>
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="secondarylogo.png" alt="Pearl Digital" style="height:34px;width:auto">
+  </a>
+  <div class="nav-center">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html" class="nav-active">Services</a></li>
+      <li><a href="operations.html">For Business</a></li>
+      <li><a href="talent.html">Join as Talent</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <a href="pricing.html" class="nav-price">Pricing</a>
+    <a href="contact.html" class="nav-cta">Get Started ›</a>
+  </div>
 </nav>
 
 <div class="page-header">
@@ -272,9 +289,10 @@ h2.sec-head.white{color:#fff}
       <a href="contact.html" class="btn btn-gold">Get Started →</a>
     </div>
     <div class="svc-visual reveal-right" style="transition-delay:.15s">
+      <img src="svc1.jpg" alt="Search Engine Optimisation" class="svc-img">
+      <div class="svc-img-overlay"></div>
       <div class="sv-circles"><span></span><span></span><span></span><span></span></div>
       <div class="sv-stat tl"><div class="sv-stat-num">+127%</div><div class="sv-stat-label">Avg. organic traffic lift</div></div>
-      <div class="sv-icon-big">🔍</div>
       <div class="sv-stat br"><div class="sv-stat-num">#1</div><div class="sv-stat-label">Target keyword rankings</div></div>
     </div>
   </div>
@@ -298,9 +316,10 @@ h2.sec-head.white{color:#fff}
       <a href="contact.html" class="btn btn-blue">Get Started →</a>
     </div>
     <div class="svc-visual reveal-left" style="transition-delay:.15s">
+      <img src="svc2.jpg" alt="Paid Advertising" class="svc-img">
+      <div class="svc-img-overlay"></div>
       <div class="sv-circles"><span></span><span></span><span></span><span></span></div>
       <div class="sv-stat tl"><div class="sv-stat-num">4.2×</div><div class="sv-stat-label">Average ROAS</div></div>
-      <div class="sv-icon-big">💰</div>
       <div class="sv-stat br"><div class="sv-stat-num">-38%</div><div class="sv-stat-label">Cost per acquisition</div></div>
     </div>
   </div>
@@ -324,9 +343,10 @@ h2.sec-head.white{color:#fff}
       <a href="contact.html" class="btn btn-forest">Get Started →</a>
     </div>
     <div class="svc-visual reveal-right" style="transition-delay:.15s">
+      <img src="svc3.jpg" alt="Content Marketing" class="svc-img">
+      <div class="svc-img-overlay"></div>
       <div class="sv-circles"><span></span><span></span><span></span><span></span></div>
       <div class="sv-stat tl"><div class="sv-stat-num">8+</div><div class="sv-stat-label">Pieces per month</div></div>
-      <div class="sv-icon-big">✍️</div>
       <div class="sv-stat br"><div class="sv-stat-num">100%</div><div class="sv-stat-label">SEO-optimised</div></div>
     </div>
   </div>
@@ -350,9 +370,10 @@ h2.sec-head.white{color:#fff}
       <a href="contact.html" class="btn btn-blue">Get Started →</a>
     </div>
     <div class="svc-visual reveal-left" style="transition-delay:.15s">
+      <img src="svc4.jpg" alt="Social Media Management" class="svc-img">
+      <div class="svc-img-overlay"></div>
       <div class="sv-circles"><span></span><span></span><span></span><span></span></div>
       <div class="sv-stat tl"><div class="sv-stat-num">4</div><div class="sv-stat-label">Platforms managed</div></div>
-      <div class="sv-icon-big">📱</div>
       <div class="sv-stat br"><div class="sv-stat-num">30/day</div><div class="sv-stat-label">Posts & engagement</div></div>
     </div>
   </div>
@@ -376,9 +397,10 @@ h2.sec-head.white{color:#fff}
       <a href="contact.html" class="btn btn-gold">Get Started →</a>
     </div>
     <div class="svc-visual reveal-right" style="transition-delay:.15s">
+      <img src="svc5.jpg" alt="Analytics & Reporting" class="svc-img">
+      <div class="svc-img-overlay"></div>
       <div class="sv-circles"><span></span><span></span><span></span><span></span></div>
       <div class="sv-stat tl"><div class="sv-stat-num">GA4</div><div class="sv-stat-label">Full setup included</div></div>
-      <div class="sv-icon-big">📊</div>
       <div class="sv-stat br"><div class="sv-stat-num">Live</div><div class="sv-stat-label">Dashboard access</div></div>
     </div>
   </div>
@@ -401,7 +423,7 @@ h2.sec-head.white{color:#fff}
     <div class="footer-col"><h4>Services</h4><ul><li><a href="#seo">SEO</a></li><li><a href="#ppc">Paid Advertising</a></li><li><a href="#content">Content Marketing</a></li><li><a href="#social">Social Media</a></li><li><a href="#analytics">Analytics</a></li></ul></div>
     <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:contact@pearldigital.ug">contact@pearldigital.ug</a></li><li><a href="#">Kampala, Uganda</a></li></ul></div>
   </div>
-  <div class="footer-bottom"><p>© 2025 Pearl Digital UG</p><p class="footer-powered">Powered by <a href="https://futuregensoft.com" target="_blank">Future Generations Software</a> · Elmot Ltd &amp; UIA</p></div>
+  <div class="footer-bottom"><p>© 2025 Pearl Digital UG</p><p class="footer-powered">Powered by <a href="https://endgamer7623.github.io/Future-generations/" target="_blank">Future Generations Software</a> · Elmot Ltd &amp; UIA</p></div>
 </footer>
 <script>
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});
