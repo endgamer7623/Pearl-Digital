@@ -224,7 +224,24 @@ h2.dh{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weig
 .bp.big:hover{background:#0e2a1c}
 .bp.b1:hover{background:#0c2318}.bp.b2:hover{background:#0c1f14}.bp.b3:hover{background:#102818}.bp.b4:hover{background:#0a1a0e}
 .bp-bg-num{position:absolute;bottom:-1.5rem;right:.25rem;font-family:'Syne',sans-serif;font-size:8rem;font-weight:900;color:rgba(255,255,255,.025);line-height:1;letter-spacing:-5px;pointer-events:none}
-.bp-icon{font-size:2.2rem;margin-bottom:1.4rem;display:block}
+.bp-icon{font-size:2.2rem;margin-bottom:1.4rem;display:block;position:relative;z-index:2}
+/* Emoji background — hidden by default, shown on hover */
+.bp-emoji-bg{
+  position:absolute;
+  bottom:-5%;right:-5%;
+  font-size:9rem;line-height:1;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .35s ease,transform .35s ease;
+  transform:scale(.85) rotate(-8deg);
+  z-index:1;
+  /* Color filter: make emoji match card bg but darker — desaturate + darken */
+  filter:grayscale(1) brightness(.18) sepia(.4);
+  width:62%;height:62%;
+  display:flex;align-items:flex-end;justify-content:flex-end;
+}
+.bp.big .bp-emoji-bg{font-size:12rem;width:58%;height:58%}
+.bp:hover .bp-emoji-bg{opacity:1;transform:scale(1) rotate(-5deg)}
 .bp h3{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.65rem;letter-spacing:-.3px;position:relative;z-index:2}
 .bp.big h3{font-size:1.75rem;letter-spacing:-.5px}
 .bp p{font-size:13.5px;color:rgba(255,255,255,.42);line-height:1.75;font-weight:300;position:relative;z-index:2}
@@ -237,6 +254,19 @@ h2.dh{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weig
 /* ── MISSION FULL-BLEED ── */
 .mission{padding:7rem 4%;background:var(--gold);position:relative;overflow:hidden}
 .mission::before{content:'';position:absolute;bottom:-6rem;right:-6rem;width:550px;height:550px;border-radius:50%;background:rgba(0,0,0,.06)}
+/* Bird image — sits on top of circle, fades right */
+.mission-bird{
+  position:absolute;
+  bottom:-2rem;right:-3rem;
+  width:520px;height:520px;
+  object-fit:contain;
+  object-position:left center;
+  /* Fade out toward the right */
+  -webkit-mask-image:linear-gradient(to right,rgba(0,0,0,.85) 0%,rgba(0,0,0,.6) 35%,rgba(0,0,0,.2) 65%,transparent 88%);
+  mask-image:linear-gradient(to right,rgba(0,0,0,.85) 0%,rgba(0,0,0,.6) 35%,rgba(0,0,0,.2) 65%,transparent 88%);
+  pointer-events:none;
+  z-index:1;
+}
 .miss-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;position:relative;z-index:2}
 .miss-left h2{
   font-family:'Syne',sans-serif;font-size:clamp(2.5rem,4.5vw,4.5rem);
@@ -284,7 +314,23 @@ h2.dh{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weig
 .wc:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(0,0,0,.5);border-color:rgba(201,164,76,.15)}
 .wc.gold-card{background:var(--gold);border-color:var(--gold)}
 .wc.blue-card{background:rgba(29,83,106,.35);border-color:rgba(110,205,232,.15)}
-.wc-icon{font-size:2.4rem;margin-bottom:1.25rem;display:block}
+.wc-icon{font-size:2.4rem;margin-bottom:1.25rem;display:block;position:relative;z-index:2}
+/* Who card emoji bg */
+.wc-emoji-bg{
+  position:absolute;
+  bottom:-8%;right:-4%;
+  font-size:9.5rem;line-height:1;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .35s ease,transform .35s ease;
+  transform:scale(.82) rotate(-6deg);
+  z-index:1;
+  filter:grayscale(1) brightness(.22) sepia(.3);
+  width:60%;height:60%;
+  display:flex;align-items:flex-end;justify-content:flex-end;
+}
+.wc:hover .wc-emoji-bg{opacity:1;transform:scale(1) rotate(-3deg)}
+.wc.gold-card .wc-emoji-bg{filter:grayscale(1) brightness(.55) sepia(.2)}
 .wc-bg{position:absolute;bottom:-1.5rem;right:-.5rem;font-family:'Syne',sans-serif;font-size:7.5rem;font-weight:900;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;letter-spacing:-5px}
 .wc.gold-card .wc-bg{color:rgba(0,0,0,.07)}
 .wc h3{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-.5px;color:#fff;margin-bottom:.75rem;line-height:1.1;position:relative;z-index:2}
@@ -475,6 +521,7 @@ h2.dh{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weig
     <div class="bento rv">
       <div class="bp big">
         <div class="bp-bg-num">01</div>
+        <div class="bp-emoji-bg">🔍</div>
         <span class="bp-icon">🔍</span>
         <h3>Search Engine<br>Optimisation</h3>
         <p>Full technical, on-page and off-page SEO built to rank you globally. Monthly audits, content strategy, backlink building and complete ranking reports.</p>
@@ -482,6 +529,7 @@ h2.dh{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weig
       </div>
       <div class="bp b1">
         <div class="bp-bg-num">02</div>
+        <div class="bp-emoji-bg">💰</div>
         <span class="bp-icon">💰</span>
         <h3>Paid Advertising</h3>
         <p>Google, Meta and LinkedIn campaigns managed end-to-end with weekly ROAS reporting.</p>
@@ -489,6 +537,7 @@ h2.dh{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weig
       </div>
       <div class="bp b2">
         <div class="bp-bg-num">03</div>
+        <div class="bp-emoji-bg">✍️</div>
         <span class="bp-icon">✍️</span>
         <h3>Content Marketing</h3>
         <p>SEO-optimised blogs, landing pages and email sequences in fluent English.</p>
@@ -496,6 +545,7 @@ h2.dh{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weig
       </div>
       <div class="bp b3">
         <div class="bp-bg-num">04</div>
+        <div class="bp-emoji-bg">📱</div>
         <span class="bp-icon">📱</span>
         <h3>Social Media</h3>
         <p>Daily posting and community management across 4 platforms.</p>
@@ -503,6 +553,7 @@ h2.dh{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weig
       </div>
       <div class="bp b4">
         <div class="bp-bg-num">05</div>
+        <div class="bp-emoji-bg">📊</div>
         <span class="bp-icon">📊</span>
         <h3>Analytics</h3>
         <p>GA4 setup, conversion tracking and live monthly dashboards.</p>
@@ -514,6 +565,8 @@ h2.dh{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weig
 
 <!-- MISSION YELLOW -->
 <section class="mission">
+  <!-- Bird image overlays the circle, fades right -->
+  <img src="fadedbird.png" alt="" class="mission-bird" aria-hidden="true">
   <div class="miss-inner rv">
     <div class="miss-left">
       <span class="lbl" style="color:rgba(0,0,0,.4);font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.75rem;display:block">Our Mission</span>
@@ -594,6 +647,7 @@ h2.dh{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weig
     <div class="who-grid">
       <div class="wc gold-card rv">
         <span class="wc-bg">01</span>
+        <div class="wc-emoji-bg">🌍</div>
         <span class="wc-icon">🌍</span>
         <h3>International Businesses</h3>
         <p>Companies in the UK, EU, UAE, and US looking for affordable, high-quality digital marketing. Subscribe to a plan and get a dedicated specialist team.</p>
@@ -601,6 +655,7 @@ h2.dh{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weig
       </div>
       <div class="wc d1 rv" style="transition-delay:.08s">
         <span class="wc-bg">02</span>
+        <div class="wc-emoji-bg">🏢</div>
         <span class="wc-icon">🏢</span>
         <h3>Businesses &amp; Organisations</h3>
         <p>Train your team in digital marketing through our structured corporate programme. Certified specialists working inside your business.</p>
@@ -608,6 +663,7 @@ h2.dh{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weig
       </div>
       <div class="wc blue-card rv" style="transition-delay:.12s">
         <span class="wc-bg">03</span>
+        <div class="wc-emoji-bg">🇺🇬</div>
         <span class="wc-icon">🇺🇬</span>
         <h3>Ugandan Talent (18–35)</h3>
         <p>Get trained, certified and connected to international clients. Build a global digital career from right here in Uganda — no degree required.</p>
@@ -615,6 +671,7 @@ h2.dh{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weig
       </div>
       <div class="wc d2 rv" style="transition-delay:.16s">
         <span class="wc-bg">04</span>
+        <div class="wc-emoji-bg">🤝</div>
         <span class="wc-icon">🤝</span>
         <h3>White-Label Agency Partners</h3>
         <p>EU and US agencies needing a reliable, high-quality delivery partner to fulfil client campaigns at scale — without the overhead.</p>
