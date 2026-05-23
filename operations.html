@@ -1,6 +1,3 @@
-Here is the updated HTML code with the navigation bar transparency and the single continuous vertical image applied as requested.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -151,18 +148,32 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
 .wt-b{background:rgba(110,205,232,.07);border:1px solid rgba(110,205,232,.13);color:var(--blue)}
 .wt-w{background:rgba(255,255,255,.05);border:1px solid var(--bd);color:rgba(255,255,255,.45)}
 
+/* CONTINUOUS IMAGE WRAPPER — spans both Tiers and Curriculum */
+.continuous-bg-wrapper{
+  position:relative;
+  background:url('verticalimage.jpg') center/cover no-repeat;
+}
+.continuous-bg-wrapper::before{
+  content:'';
+  position:absolute;inset:0;
+  background:var(--forest);
+  z-index:0;
+}
+/* Tiers section gets forest overlay at 82% opacity (100% - 18%) */
+.tiers-section{
+  position:relative;z-index:1;
+  background:rgba(7,27,16,0.82);
+}
+/* Curriculum section gets ink-2 overlay at 88% opacity (100% - 12%) */
+.curr-section{
+  position:relative;z-index:1;
+  background:rgba(10,26,14,0.88);
+}
+
 /* PROGRAMME TIERS */
 .tiers{
   padding:6rem 4%;
   position:relative;overflow:hidden;
-  background:var(--forest);
-}
-/* Continuous vertical image — spans full height */
-.tiers::before{
-  content:'';position:absolute;inset:0;
-  background:url('verticalimage.jpg') center/cover no-repeat;
-  opacity:.18;
-  z-index:0;
 }
 .tiers-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
 .tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem}
@@ -208,14 +219,6 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
 .curr{
   padding:6rem 4%;
   position:relative;overflow:hidden;
-  background:var(--ink-2);
-}
-/* Same continuous vertical image — spans full height */
-.curr::before{
-  content:'';position:absolute;inset:0;
-  background:url('verticalimage.jpg') center/cover no-repeat;
-  opacity:.12;
-  z-index:0;
 }
 .curr-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;position:relative;z-index:1}
 .curr-left h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:900;letter-spacing:-2px;line-height:1;color:#fff;margin-bottom:1rem}
@@ -343,7 +346,7 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
       <source src="ops-hero.mp4" type="video/mp4">
     </video>
   </div>
-  <!-- Green + yellow blurry overlay 10% -->
+  <!-- Green + yellow blurry overlay at 10% -->
   <div class="ph-color-overlay"></div>
   <!-- Dark legibility overlay -->
   <div class="ph-dark-overlay"></div>
@@ -426,93 +429,102 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
   </div>
 </section>
 
-<!-- TIERS -->
-<section class="tiers" id="tiers">
-  <div class="tiers-inner rv">
-    <span class="lbl lbl-gold">Programme Tiers</span>
-    <h2 style="font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:900;letter-spacing:-2px;color:#fff">Choose the right<br>programme for your team.</h2>
-    <p style="font-size:1.05rem;font-weight:300;color:rgba(255,255,255,.42);max-width:560px;margin-top:.75rem">All programmes include full platform access, manager dashboard and official certifications. Delivered in English.</p>
-    <div class="tiers-grid">
-      <div class="tc rv">
-        <div class="tc-name">Starter Team</div>
-        <div class="tc-size">2–5 <span class="tc-unit">people</span></div>
-        <div class="tc-desc">Perfect for small teams or startups wanting to build in-house digital capability.</div>
-        <div class="tc-div"></div>
-        <ul class="tc-feats">
-          <li><span class="tck">✓</span>Full 8-module curriculum access</li>
-          <li><span class="tck">✓</span>2 live sessions per week · 12 weeks</li>
-          <li><span class="tck">✓</span>Google Ads &amp; GA4 certification prep</li>
-          <li><span class="tck">✓</span>Manager progress dashboard</li>
-          <li><span class="tck">✓</span>Pearl Digital team certificates</li>
-          <li><span class="tck">✓</span>Email support</li>
-        </ul>
-        <button class="tc-btn tb-outline" onclick="window.location='contact.html'">Enquire Now →</button>
-      </div>
-      <div class="tc feat rv" style="transition-delay:.1s">
-        <div class="feat-pill fp-gold">Most Popular</div>
-        <div class="tc-name">Business Team</div>
-        <div class="tc-size">6–20 <span class="tc-unit">people</span></div>
-        <div class="tc-desc">Ideal for growing businesses upskilling a full marketing or sales department.</div>
-        <div class="tc-div"></div>
-        <ul class="tc-feats">
-          <li><span class="tck">✓</span>Full curriculum + advanced modules</li>
-          <li><span class="tck">✓</span>3 live sessions per week · 10 weeks</li>
-          <li><span class="tck">✓</span>Google, Meta &amp; LinkedIn cert. prep</li>
-          <li><span class="tck">✓</span>Dedicated instructor per 5 participants</li>
-          <li><span class="tck">✓</span>Advanced manager dashboard</li>
-          <li><span class="tck">✓</span>Monthly 1-on-1 coaching calls</li>
-          <li><span class="tck">✓</span>Priority support</li>
-        </ul>
-        <button class="tc-btn tb-dark" onclick="window.location='contact.html'">Enquire Now →</button>
-      </div>
-      <div class="tc feat-blue rv" style="transition-delay:.18s">
-        <div class="feat-pill fp-blue">Enterprise</div>
-        <div class="tc-name">Organisation</div>
-        <div class="tc-size">21+ <span class="tc-unit">people</span></div>
-        <div class="tc-desc">For large organisations, corporates or NGOs wanting company-wide digital upskilling.</div>
-        <div class="tc-div"></div>
-        <ul class="tc-feats">
-          <li><span class="tck">✓</span>Fully customised curriculum</li>
-          <li><span class="tck">✓</span>On-site or remote delivery options</li>
-          <li><span class="tck">✓</span>All Google, Meta, LinkedIn certifications</li>
-          <li><span class="tck">✓</span>Dedicated programme manager</li>
-          <li><span class="tck">✓</span>White-label certificates with your branding</li>
-          <li><span class="tck">✓</span>Post-programme coaching (3 months)</li>
-          <li><span class="tck">✓</span>Bespoke reporting &amp; SLA</li>
-        </ul>
-        <button class="tc-btn tb-blue" onclick="window.location='contact.html'">Contact Us →</button>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- CONTINUOUS BACKGROUND WRAPPER — spans Tiers + Curriculum -->
+<div class="continuous-bg-wrapper">
 
-<!-- CURRICULUM -->
-<section class="curr">
-  <div class="curr-inner">
-    <div class="curr-left rv-l">
-      <span class="lbl lbl-gold">8-Module Curriculum</span>
-      <h2>What your team<br>will learn.</h2>
-      <p>A practical, hands-on curriculum built around real campaign work — not just theory. Every module ends with an assessment and live project brief.</p>
-      <p style="font-size:14px;font-weight:300;color:rgba(255,255,255,.35);line-height:1.8">Modules 7 and 8 involve working on live Pearl Digital client campaigns — giving your team real international work experience.</p>
-      <div class="cert-chips" style="margin-top:1.5rem">
-        <span class="cert-chip">Google Ads</span>
-        <span class="cert-chip">GA4 Certified</span>
-        <span class="cert-chip">Meta Blueprint</span>
-        <span class="cert-chip">Pearl Digital Cert.</span>
+  <!-- TIERS SECTION with forest overlay -->
+  <div class="tiers-section">
+    <section class="tiers" id="tiers">
+      <div class="tiers-inner rv">
+        <span class="lbl lbl-gold">Programme Tiers</span>
+        <h2 style="font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:900;letter-spacing:-2px;color:#fff">Choose the right<br>programme for your team.</h2>
+        <p style="font-size:1.05rem;font-weight:300;color:rgba(255,255,255,.42);max-width:560px;margin-top:.75rem">All programmes include full platform access, manager dashboard and official certifications. Delivered in English.</p>
+        <div class="tiers-grid">
+          <div class="tc rv">
+            <div class="tc-name">Starter Team</div>
+            <div class="tc-size">2–5 <span class="tc-unit">people</span></div>
+            <div class="tc-desc">Perfect for small teams or startups wanting to build in-house digital capability.</div>
+            <div class="tc-div"></div>
+            <ul class="tc-feats">
+              <li><span class="tck">✓</span>Full 8-module curriculum access</li>
+              <li><span class="tck">✓</span>2 live sessions per week · 12 weeks</li>
+              <li><span class="tck">✓</span>Google Ads &amp; GA4 certification prep</li>
+              <li><span class="tck">✓</span>Manager progress dashboard</li>
+              <li><span class="tck">✓</span>Pearl Digital team certificates</li>
+              <li><span class="tck">✓</span>Email support</li>
+            </ul>
+            <button class="tc-btn tb-outline" onclick="window.location='contact.html'">Enquire Now →</button>
+          </div>
+          <div class="tc feat rv" style="transition-delay:.1s">
+            <div class="feat-pill fp-gold">Most Popular</div>
+            <div class="tc-name">Business Team</div>
+            <div class="tc-size">6–20 <span class="tc-unit">people</span></div>
+            <div class="tc-desc">Ideal for growing businesses upskilling a full marketing or sales department.</div>
+            <div class="tc-div"></div>
+            <ul class="tc-feats">
+              <li><span class="tck">✓</span>Full curriculum + advanced modules</li>
+              <li><span class="tck">✓</span>3 live sessions per week · 10 weeks</li>
+              <li><span class="tck">✓</span>Google, Meta &amp; LinkedIn cert. prep</li>
+              <li><span class="tck">✓</span>Dedicated instructor per 5 participants</li>
+              <li><span class="tck">✓</span>Advanced manager dashboard</li>
+              <li><span class="tck">✓</span>Monthly 1-on-1 coaching calls</li>
+              <li><span class="tck">✓</span>Priority support</li>
+            </ul>
+            <button class="tc-btn tb-dark" onclick="window.location='contact.html'">Enquire Now →</button>
+          </div>
+          <div class="tc feat-blue rv" style="transition-delay:.18s">
+            <div class="feat-pill fp-blue">Enterprise</div>
+            <div class="tc-name">Organisation</div>
+            <div class="tc-size">21+ <span class="tc-unit">people</span></div>
+            <div class="tc-desc">For large organisations, corporates or NGOs wanting company-wide digital upskilling.</div>
+            <div class="tc-div"></div>
+            <ul class="tc-feats">
+              <li><span class="tck">✓</span>Fully customised curriculum</li>
+              <li><span class="tck">✓</span>On-site or remote delivery options</li>
+              <li><span class="tck">✓</span>All Google, Meta, LinkedIn certifications</li>
+              <li><span class="tck">✓</span>Dedicated programme manager</li>
+              <li><span class="tck">✓</span>White-label certificates with your branding</li>
+              <li><span class="tck">✓</span>Post-programme coaching (3 months)</li>
+              <li><span class="tck">✓</span>Bespoke reporting &amp; SLA</li>
+            </ul>
+            <button class="tc-btn tb-blue" onclick="window.location='contact.html'">Contact Us →</button>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="mod-list rv-r" style="transition-delay:.15s">
-      <div class="mod"><span class="mod-n">01</span><div class="mod-emoji-bg">🌐</div><div class="mod-info"><div class="mod-title">Digital Marketing Foundations</div><div class="mod-weeks">Week 1–2 · Theory + Practical</div></div></div>
-      <div class="mod"><span class="mod-n">02</span><div class="mod-emoji-bg">🔍</div><div class="mod-info"><div class="mod-title">Search Engine Optimisation</div><div class="mod-weeks">Week 3–4 · Keyword tools + audits</div></div><span class="mod-cert">Google</span></div>
-      <div class="mod"><span class="mod-n">03</span><div class="mod-emoji-bg">💰</div><div class="mod-info"><div class="mod-title">Google Ads &amp; PPC</div><div class="mod-weeks">Week 5 · Campaign setup + bidding</div></div><span class="mod-cert">Certified</span></div>
-      <div class="mod"><span class="mod-n">04</span><div class="mod-emoji-bg">📘</div><div class="mod-info"><div class="mod-title">Meta Ads (Facebook &amp; Instagram)</div><div class="mod-weeks">Week 6 · Targeting + creative</div></div><span class="mod-cert">Meta</span></div>
-      <div class="mod"><span class="mod-n">05</span><div class="mod-emoji-bg">✍️</div><div class="mod-info"><div class="mod-title">Content Marketing &amp; Copywriting</div><div class="mod-weeks">Week 7 · SEO writing, email, landing pages</div></div></div>
-      <div class="mod"><span class="mod-n">06</span><div class="mod-emoji-bg">📱</div><div class="mod-info"><div class="mod-title">Social Media Management</div><div class="mod-weeks">Week 8 · Content calendar, community mgmt</div></div></div>
-      <div class="mod"><span class="mod-n">07</span><div class="mod-emoji-bg">📊</div><div class="mod-info"><div class="mod-title">Analytics, GA4 &amp; Reporting</div><div class="mod-weeks">Week 9 · Dashboard setup, attribution</div></div><span class="mod-cert">GA4</span></div>
-      <div class="mod"><span class="mod-n">08</span><div class="mod-emoji-bg">🎯</div><div class="mod-info"><div class="mod-title">Live Campaign Project</div><div class="mod-weeks">Week 10–12 · Real client work</div></div></div>
-    </div>
+    </section>
   </div>
-</section>
+
+  <!-- CURRICULUM SECTION with ink-2 overlay -->
+  <div class="curr-section">
+    <section class="curr">
+      <div class="curr-inner">
+        <div class="curr-left rv-l">
+          <span class="lbl lbl-gold">8-Module Curriculum</span>
+          <h2>What your team<br>will learn.</h2>
+          <p>A practical, hands-on curriculum built around real campaign work — not just theory. Every module ends with an assessment and live project brief.</p>
+          <p style="font-size:14px;font-weight:300;color:rgba(255,255,255,.35);line-height:1.8">Modules 7 and 8 involve working on live Pearl Digital client campaigns — giving your team real international work experience.</p>
+          <div class="cert-chips" style="margin-top:1.5rem">
+            <span class="cert-chip">Google Ads</span>
+            <span class="cert-chip">GA4 Certified</span>
+            <span class="cert-chip">Meta Blueprint</span>
+            <span class="cert-chip">Pearl Digital Cert.</span>
+          </div>
+        </div>
+        <div class="mod-list rv-r" style="transition-delay:.15s">
+          <div class="mod"><span class="mod-n">01</span><div class="mod-emoji-bg">🌐</div><div class="mod-info"><div class="mod-title">Digital Marketing Foundations</div><div class="mod-weeks">Week 1–2 · Theory + Practical</div></div></div>
+          <div class="mod"><span class="mod-n">02</span><div class="mod-emoji-bg">🔍</div><div class="mod-info"><div class="mod-title">Search Engine Optimisation</div><div class="mod-weeks">Week 3–4 · Keyword tools + audits</div></div><span class="mod-cert">Google</span></div>
+          <div class="mod"><span class="mod-n">03</span><div class="mod-emoji-bg">💰</div><div class="mod-info"><div class="mod-title">Google Ads &amp; PPC</div><div class="mod-weeks">Week 5 · Campaign setup + bidding</div></div><span class="mod-cert">Certified</span></div>
+          <div class="mod"><span class="mod-n">04</span><div class="mod-emoji-bg">📘</div><div class="mod-info"><div class="mod-title">Meta Ads (Facebook &amp; Instagram)</div><div class="mod-weeks">Week 6 · Targeting + creative</div></div><span class="mod-cert">Meta</span></div>
+          <div class="mod"><span class="mod-n">05</span><div class="mod-emoji-bg">✍️</div><div class="mod-info"><div class="mod-title">Content Marketing &amp; Copywriting</div><div class="mod-weeks">Week 7 · SEO writing, email, landing pages</div></div></div>
+          <div class="mod"><span class="mod-n">06</span><div class="mod-emoji-bg">📱</div><div class="mod-info"><div class="mod-title">Social Media Management</div><div class="mod-weeks">Week 8 · Content calendar, community mgmt</div></div></div>
+          <div class="mod"><span class="mod-n">07</span><div class="mod-emoji-bg">📊</div><div class="mod-info"><div class="mod-title">Analytics, GA4 &amp; Reporting</div><div class="mod-weeks">Week 9 · Dashboard setup, attribution</div></div><span class="mod-cert">GA4</span></div>
+          <div class="mod"><span class="mod-n">08</span><div class="mod-emoji-bg">🎯</div><div class="mod-info"><div class="mod-title">Live Campaign Project</div><div class="mod-weeks">Week 10–12 · Real client work</div></div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</div><!-- end continuous-bg-wrapper -->
 
 <!-- ROI TABLE -->
 <section class="roi">
@@ -578,4 +590,3 @@ document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
-```
