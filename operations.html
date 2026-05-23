@@ -22,7 +22,8 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
   --bd:rgba(255,255,255,0.07);--bd2:rgba(255,255,255,0.12);
 }
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 4%;transition:all .3s;background:rgba(4,11,6,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 4%;transition:background .3s,backdrop-filter .3s,border-color .3s;background:transparent;border-bottom:1px solid transparent}
+.nav.stuck{background:rgba(4,11,6,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd)}
 .nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
 .nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .2s;border-radius:1px}
@@ -153,10 +154,10 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
   position:relative;overflow:hidden;
   background:var(--forest);
 }
-/* verticalimage.jpg as background */
+/* verticalimage.jpg — top half of one continuous image */
 .tiers::before{
   content:'';position:absolute;inset:0;
-  background:url('verticalimage.jpg') center center / cover no-repeat;
+  background:url('verticalimage.jpg') center top / 100% auto no-repeat;
   opacity:.18;
   z-index:0;
 }
@@ -206,10 +207,10 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
   position:relative;overflow:hidden;
   background:var(--ink-2);
 }
-/* verticalimage.jpg as background */
+/* verticalimage.jpg — bottom half of one continuous image */
 .curr::before{
   content:'';position:absolute;inset:0;
-  background:url('verticalimage.jpg') center center / cover no-repeat;
+  background:url('verticalimage.jpg') center bottom / 100% auto no-repeat;
   opacity:.12;
   z-index:0;
 }
@@ -562,11 +563,13 @@ body{font-family:'Outfit',sans-serif;background:#040b06;color:#fff;overflow-x:hi
   </div>
   <div class="footer-bottom">
     <p>© 2025 Pearl Digital UG. All rights reserved.</p>
-    <p>Powered by <a href="https://futuregensoft.com" target="_blank">Future Generations Software</a> · Elmot Ltd &amp; Uganda Investment Authority</p>
+    <p>Powered by <a href="https://endgamer7623.github.io/Future-generations/" target="_blank">Future Generations Software</a> · Elmot Ltd &amp; Uganda Investment Authority</p>
   </div>
 </footer>
 
 <script>
+const nav=document.querySelector('.nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('stuck',scrollY>50));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});
 document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>io.observe(el));
 </script>
